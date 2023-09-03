@@ -42,7 +42,7 @@
 
 
 Event Driven中的 Event Bus實作使用RabbitMQ。為了確保資料一致性及網路不穩定性。在訂單服務及餐廳服務之間需要實作 
-[TransactionOutboxPattern]
+[TransactionOutboxPattern]:(https://learn.microsoft.com/en-us/)
 
 
 
