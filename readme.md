@@ -38,15 +38,20 @@
 ## 實作技術
 
 
-採用 RestfulAPI Http同步式API及事件驅動架構的非同步式API。
+- 採用 RestfulAPI Http同步式API及事件驅動架構的非同步式API。
 
 
-Event Driven中的 Event Bus實作使用RabbitMQ。為了確保資料一致性及網路不穩定性。在訂單服務及餐廳服務之間需要實作 
+- Event Driven中的 Event Bus實作使用RabbitMQ。為了確保資料一致性及網路不穩定性。在訂單服務及餐廳服務之間需要實作 
 [TransactionOutboxPattern](https://learn.microsoft.com/en-us/azure/architecture/best-practices/transactional-outbox-cosmos)
 
 
+- 從使用者所在座標可以使用ElasticSearch進行座標優化查詢。
 
 
+## 軟體架構
+
+- 採用整潔架構，降低對於資料庫及外部展現層依賴，只關注商業流程及商業邏輯實現。
+- 更易於進行單元測試及自動化測試
 
 
 
