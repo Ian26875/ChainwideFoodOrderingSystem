@@ -27,3 +27,43 @@
 
 
 劃分淺在地Bounded Context。
+
+- 訂單服務
+- 外送員服務
+- 餐廳服務中的餐點 or 餐廳服務及餐點服務 (資料一致性採用最終一致性。非強一致性)
+
+![劃分不同的Bounded Context](Images/EventStorming_BounedContext.jpg)
+
+
+## 實作技術
+
+
+採用 RestfulAPI Http同步式API及事件驅動架構的非同步式API。
+
+
+Event Driven中的 Event Bus實作使用RabbitMQ。為了確保資料一致性及網路不穩定性。在訂單服務及餐廳服務之間需要實作 
+[TransactionOutboxPattern]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
