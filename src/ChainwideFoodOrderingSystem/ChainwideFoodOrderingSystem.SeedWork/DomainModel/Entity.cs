@@ -1,4 +1,4 @@
-﻿namespace ChainwideFoodOrderingSystem.SeedWork;
+﻿namespace ChainwideFoodOrderingSystem.SeedWork.DomainModel;
 
 public abstract class Entity<TId> : IInternalEventHandler where TId : ValueObject<TId>
 {

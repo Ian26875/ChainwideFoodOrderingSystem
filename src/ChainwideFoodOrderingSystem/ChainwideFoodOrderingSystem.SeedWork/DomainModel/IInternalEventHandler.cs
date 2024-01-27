@@ -1,4 +1,4 @@
-﻿namespace ChainwideFoodOrderingSystem.SeedWork;
+﻿namespace ChainwideFoodOrderingSystem.SeedWork.DomainModel;
 
 public interface IInternalEventHandler
 {

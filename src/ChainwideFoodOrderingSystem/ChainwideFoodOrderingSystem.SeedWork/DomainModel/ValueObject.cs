@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Reflection;
 
+namespace ChainwideFoodOrderingSystem.SeedWork.DomainModel;
+
 public abstract class ValueObject<T> where T : ValueObject<T>
 {
     private static readonly Member[] Members = GetMembers().ToArray();
