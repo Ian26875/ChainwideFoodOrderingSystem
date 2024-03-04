@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChainwideFoodOrderingSystem.SeedWork", "ChainwideFoodOrderingSystem.SeedWork\ChainwideFoodOrderingSystem.SeedWork.csproj", "{C0E059E5-D0EB-4B1B-930A-5508BBFC6BE0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChainwideFoodOrderingSystem.Orders.Entity", "ChainwideFoodOrderingSystem.Orders.Entity\ChainwideFoodOrderingSystem.Orders.Entity.csproj", "{D81D4726-7FA7-40BC-9623-54DA36CA5E9F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{C0E059E5-D0EB-4B1B-930A-5508BBFC6BE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C0E059E5-D0EB-4B1B-930A-5508BBFC6BE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C0E059E5-D0EB-4B1B-930A-5508BBFC6BE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D81D4726-7FA7-40BC-9623-54DA36CA5E9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D81D4726-7FA7-40BC-9623-54DA36CA5E9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D81D4726-7FA7-40BC-9623-54DA36CA5E9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D81D4726-7FA7-40BC-9623-54DA36CA5E9F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
