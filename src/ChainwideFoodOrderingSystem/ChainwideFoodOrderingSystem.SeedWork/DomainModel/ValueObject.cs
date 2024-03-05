@@ -1,12 +1,23 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Reflection;
 
 namespace ChainwideFoodOrderingSystem.SeedWork.DomainModel;
 
+/// <summary>
+/// The value object class
+/// </summary>
 public abstract class ValueObject<T> where T : ValueObject<T>
 {
+    /// <summary>
+    /// The to array
+    /// </summary>
     private static readonly Member[] Members = GetMembers().ToArray();
 
+    /// <summary>
+    /// Describes whether this instance equals
+    /// </summary>
+    /// <param name="other">The other</param>
+    /// <returns>The bool</returns>
     public override bool Equals(object other)
     {
         if (ReferenceEquals(null, other)) return false;
@@ -25,6 +36,10 @@ public abstract class ValueObject<T> where T : ValueObject<T>
         );
     }
 
+    /// <summary>
+    /// Gets the hash code
+    /// </summary>
+    /// <returns>The int</returns>
     public override int GetHashCode()
     {
         return CombineHashCodes(
@@ -46,6 +61,10 @@ public abstract class ValueObject<T> where T : ValueObject<T>
         return !Equals(left, right);
     }
 
+    /// <summary>
+    /// Returns the string
+    /// </summary>
+    /// <returns>The string</returns>
     public override string ToString()
     {
         if (Members.Length == 1)
@@ -75,6 +94,10 @@ public abstract class ValueObject<T> where T : ValueObject<T>
         return $"{typeof(T).Name}[{string.Join("|", values)}]";
     }
 
+    /// <summary>
+    /// Gets the members
+    /// </summary>
+    /// <returns>An enumerable of member</returns>
     private static IEnumerable<Member> GetMembers()
     {
         var t = typeof(T);
@@ -91,12 +114,22 @@ public abstract class ValueObject<T> where T : ValueObject<T>
         }
     }
 
+    /// <summary>
+    /// Gets the enumerable values using the specified obj
+    /// </summary>
+    /// <param name="obj">The obj</param>
+    /// <returns>An enumerable of object</returns>
     private static IEnumerable<object> GetEnumerableValues(object obj)
     {
         var enumerator = ((IEnumerable) obj).GetEnumerator();
         while (enumerator.MoveNext()) yield return enumerator.Current;
     }
 
+    /// <summary>
+    /// Combines the hash codes using the specified objs
+    /// </summary>
+    /// <param name="objs">The objs</param>
+    /// <returns>The int</returns>
     private static int CombineHashCodes(IEnumerable<object> objs)
     {
         unchecked
@@ -105,13 +138,33 @@ public abstract class ValueObject<T> where T : ValueObject<T>
         }
     }
 
+    /// <summary>
+    /// The member
+    /// </summary>
     private struct Member
     {
+        /// <summary>
+        /// The name
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The get value
+        /// </summary>
         public readonly Func<object, object> GetValue;
+        /// <summary>
+        /// The is non string enumerable
+        /// </summary>
         public readonly bool IsNonStringEnumerable;
+        /// <summary>
+        /// The type
+        /// </summary>
         public readonly Type Type;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Member"/> class
+        /// </summary>
+        /// <param name="info">The info</param>
+        /// <exception cref="ArgumentException">Member is not a field or property?!?! </exception>
         public Member(MemberInfo info)
         {
             switch (info)

@@ -1,8 +1,8 @@
 ﻿using ChainwideFoodOrderingSystem.SeedWork.DomainModel;
 
-namespace ChainwideFoodOrderingSystem.SeedWork;
+namespace ChainwideFoodOrderingSystem.SeedWork.Core;
 
 public interface IEventBus
 {
-    Task PublishAsync(IDomainEvent domainEvent);
+    Task PublishAsync(DomainEvent domainEvent);
 }

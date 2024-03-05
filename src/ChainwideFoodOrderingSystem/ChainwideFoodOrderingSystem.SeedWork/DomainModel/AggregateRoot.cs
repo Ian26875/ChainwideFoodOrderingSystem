@@ -1,41 +1,84 @@
-﻿namespace ChainwideFoodOrderingSystem.SeedWork.DomainModel;
+namespace ChainwideFoodOrderingSystem.SeedWork.DomainModel;
 
-public abstract class AggregateRoot : IInternalEventHandler
+/// <summary>
+/// The aggregate root class
+/// </summary>
+/// <seealso cref="IInternalEventHandler"/>
+public abstract class AggregateRoot<TId> : IInternalEventHandler where TId : ValueObject<TId>
 {
-    private readonly List<IDomainEvent> _uncommittedChanges = new();
+    public TId Id { get; }
+    
+    /// <summary>
+    /// The uncommitted changes
+    /// </summary>
+    private readonly List<DomainEvent> _uncommittedChanges = new();
 
-    void IInternalEventHandler.Handle(IDomainEvent domainEvent)
+    /// <summary>
+    /// Handles the domain event
+    /// </summary>
+    /// <param name="domainEvent">The domain event</param>
+    void IInternalEventHandler.Handle(DomainEvent domainEvent)
     {
         When(domainEvent);
     }
 
-    public IReadOnlyList<IDomainEvent> GetUncommittedChanges()
+    /// <summary>
+    /// Gets the uncommitted changes
+    /// </summary>
+    /// <returns>The uncommitted changes</returns>
+    public IReadOnlyList<DomainEvent> GetUncommittedChanges()
     {
         return _uncommittedChanges;
     }
 
-    protected abstract void When(IDomainEvent domainEvent);
+    /// <summary>
+    /// Whens the domain event
+    /// </summary>
+    /// <param name="domainEvent">The domain event</param>
+    protected abstract void When(DomainEvent domainEvent);
 
-    protected void Apply(IDomainEvent domainEvent)
+    /// <summary>
+    /// Applies the domain event
+    /// </summary>
+    /// <param name="domainEvent">The domain event</param>
+    protected void Apply(DomainEvent domainEvent)
     {
         When(domainEvent);
         EnsureValidState();
         _uncommittedChanges.Add(domainEvent);
     }
 
+    /// <summary>
+    /// Clears the uncommitted changes
+    /// </summary>
     public void ClearUncommittedChanges()
     {
         _uncommittedChanges.Clear();
     }
 
-    public void Load(IEnumerable<IDomainEvent> domainEvents)
+    /// <summary>
+    /// Loads the domain events
+    /// </summary>
+    /// <param name="domainEvents">The domain events</param>
+    public void Load(IEnumerable<DomainEvent> domainEvents)
     {
-        foreach (var domainEvent in domainEvents) When(domainEvent);
+        foreach (var domainEvent in domainEvents)
+        {
+            When(domainEvent);
+        }
     }
 
+    /// <summary>
+    /// Ensures the valid state
+    /// </summary>
     protected abstract void EnsureValidState();
 
-    protected void ApplyToEntity(IInternalEventHandler entity, IDomainEvent domainEvent)
+    /// <summary>
+    /// Applies the to entity using the specified entity
+    /// </summary>
+    /// <param name="entity">The entity</param>
+    /// <param name="domainEvent">The domain event</param>
+    protected void ApplyToEntity(IInternalEventHandler entity, DomainEvent domainEvent)
     {
         entity?.Handle(domainEvent);
     }

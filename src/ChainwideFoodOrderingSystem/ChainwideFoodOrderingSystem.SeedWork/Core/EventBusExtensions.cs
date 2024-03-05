@@ -4,7 +4,7 @@ namespace ChainwideFoodOrderingSystem.SeedWork.Core;
 
 public static class EventBusExtensions
 {
-    public static async Task DispatchDomainEventAsync(this IEventBus eventBus, AggregateRoot aggregateRoot)
+    public static async Task DispatchDomainEventAsync<TId>(this IEventBus eventBus, AggregateRoot<TId> aggregateRoot) where TId : ValueObject<TId>
     {
         foreach (var domainEvent in aggregateRoot.GetUncommittedChanges())
         {
