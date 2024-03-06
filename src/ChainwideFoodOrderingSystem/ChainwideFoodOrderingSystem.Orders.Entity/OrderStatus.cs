@@ -6,6 +6,11 @@
 public enum OrderStatus
 {
     /// <summary>
+    /// 草稿
+    /// </summary>
+    Draft,
+    
+    /// <summary>
     ///     訂單已提交，等待處理
     /// </summary>
     Pending,

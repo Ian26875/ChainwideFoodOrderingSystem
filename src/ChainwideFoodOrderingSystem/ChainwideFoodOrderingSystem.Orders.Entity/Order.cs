@@ -1,22 +1,44 @@
-﻿using ChainwideFoodOrderingSystem.Orders.Entity.DomainEvents;
-using ChainwideFoodOrderingSystem.SeedWork.DomainModel;
+using ChainwideFoodOrderingSystem.Orders.Entity.DomainEvents;
+using ChainwideFoodOrderingSystem.SeedWork.Entity;
 
 namespace ChainwideFoodOrderingSystem.Orders.Entity;
 
+/// <summary>
+///     訂單聚合根
+/// </summary>
 public class Order : AggregateRoot<OrderId>
 {
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="Order" /> class
+    /// </summary>
+    private Order()
+    {
+    }
+
+    /// <summary>
+    ///     訂單項目列表
+    /// </summary>
     public List<OrderItem> OrderItems { get; }
 
+    /// <summary>
+    ///     購買者識別碼
+    /// </summary>
     public BuyId BuyId { get; }
 
+    /// <summary>
+    ///     配送地址
+    /// </summary>
     public Address Address { get; }
 
     /// <summary>
-    /// 訂單狀態
+    ///     訂單狀態
     /// </summary>
     public OrderStatus Status { get; private set; }
 
-    public DateTime CreatedAt { get; }
+    /// <summary>
+    ///     訂單創建時間
+    /// </summary>
+    public DateTime CreatedAt { get; private set; }
 
     /// <summary>
     ///     取得訂單的總價。
@@ -27,12 +49,60 @@ public class Order : AggregateRoot<OrderId>
         return OrderItems.Sum(o => o.Quantity * o.UnitPrice);
     }
 
-
-    public void AddOrderItem(int menuItemId,string menuItemName)
+    /// <summary>
+    ///     Creates the buy id
+    /// </summary>
+    /// <param name="buyId">The buy id</param>
+    /// <param name="address">The address</param>
+    /// <returns>The order</returns>
+    public static Order Create(BuyId buyId, Address address)
     {
-        
+        var order = new Order
+        {
+            Status = OrderStatus.Draft, CreatedAt = DateTime.UtcNow
+        };
+
+        order.Apply(new OrderCreatedEvent(buyId, address));
+        return order;
     }
-    
+
+    /// <summary>
+    /// 添加訂單項目
+    /// </summary>
+    /// <param name="menuItemId"></param>
+    /// <param name="menuItemName"></param>
+    /// <param name="quantity"></param>
+    /// <param name="unitPrice"></param>
+    /// <param name="description"></param>
+    /// <param name="options"></param>
+    /// <param name="category"></param>
+    /// <param name="specialInstructions"></param>
+    public void AddOrderItem(int menuItemId,
+                             string menuItemName,
+                             int quantity,
+                             decimal unitPrice,
+                             string description,
+                             string options,
+                             string category,
+                             string specialInstructions)
+    {
+        Apply
+        (
+            new OrderItemAddedEvent
+            (
+                menuItemId, 
+                menuItemName, 
+                quantity, 
+                unitPrice, 
+                description, 
+                options, 
+                category, 
+                specialInstructions
+            )
+        );
+    }
+
+
     /// <summary>
     ///     將訂單標記為已接受。
     /// </summary>
@@ -48,11 +118,17 @@ public class Order : AggregateRoot<OrderId>
         Apply(new OrderMarkedAsAcceptedEvent(Id));
     }
 
-
+    /// <summary>
+    ///     Whens the domain event
+    /// </summary>
+    /// <param name="domainEvent">The domain event</param>
     protected override void When(DomainEvent domainEvent)
     {
     }
 
+    /// <summary>
+    ///     Ensures the valid state
+    /// </summary>
     protected override void EnsureValidState()
     {
     }

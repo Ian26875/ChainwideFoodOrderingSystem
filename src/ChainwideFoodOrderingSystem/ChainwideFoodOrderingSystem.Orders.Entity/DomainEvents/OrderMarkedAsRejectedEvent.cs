@@ -1,4 +1,4 @@
-﻿using ChainwideFoodOrderingSystem.SeedWork.DomainModel;
+﻿using ChainwideFoodOrderingSystem.SeedWork.Entity;
 
 namespace ChainwideFoodOrderingSystem.Orders.Entity.DomainEvents;
 

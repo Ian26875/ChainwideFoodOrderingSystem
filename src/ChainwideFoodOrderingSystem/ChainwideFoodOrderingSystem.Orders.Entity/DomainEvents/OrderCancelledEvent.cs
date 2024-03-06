@@ -2,12 +2,12 @@
 
 namespace ChainwideFoodOrderingSystem.Orders.Entity.DomainEvents;
 
-public class OrderMarkedAsPendingEvent : DomainEvent
+public class OrderCancelledEvent : DomainEvent
 {
     public Guid OrderId { get; }
 
-    public OrderMarkedAsPendingEvent(OrderId orderId)
+    public OrderCancelledEvent(Guid orderId)
     {
-        this.OrderId = orderId;
+        OrderId = orderId;
     }
 }
