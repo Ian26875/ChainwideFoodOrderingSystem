@@ -6,4 +6,13 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\ChainwideFoodOrderingSystem.Orders.Entity\ChainwideFoodOrderingSystem.Orders.Entity.csproj" />
+      <ProjectReference Include="..\ChainwideFoodOrderingSystem.SeedWork\ChainwideFoodOrderingSystem.SeedWork.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="InputPort\Policy\" />
+    </ItemGroup>
+
 </Project>
