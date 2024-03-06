@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChainwideFoodOrderingSystem
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChainwideFoodOrderingSystem.Orders.Entity", "ChainwideFoodOrderingSystem.Orders.Entity\ChainwideFoodOrderingSystem.Orders.Entity.csproj", "{D81D4726-7FA7-40BC-9623-54DA36CA5E9F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChainwideFoodOrderingSystem.Orders.UseCase", "ChainwideFoodOrderingSystem.Orders.UseCase\ChainwideFoodOrderingSystem.Orders.UseCase.csproj", "{AD18CB1E-6DAF-4564-B736-B0E51DB125D9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{D81D4726-7FA7-40BC-9623-54DA36CA5E9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D81D4726-7FA7-40BC-9623-54DA36CA5E9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D81D4726-7FA7-40BC-9623-54DA36CA5E9F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD18CB1E-6DAF-4564-B736-B0E51DB125D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD18CB1E-6DAF-4564-B736-B0E51DB125D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD18CB1E-6DAF-4564-B736-B0E51DB125D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD18CB1E-6DAF-4564-B736-B0E51DB125D9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
