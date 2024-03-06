@@ -23,12 +23,12 @@ public class Order : AggregateRoot<OrderId>
     /// <summary>
     ///     購買者識別碼
     /// </summary>
-    public BuyId BuyId { get; }
+    public BuyId BuyId { get; private set; }
 
     /// <summary>
     ///     配送地址
     /// </summary>
-    public Address Address { get; }
+    public Address Address { get; private set; }
 
     /// <summary>
     ///     訂單狀態
@@ -57,11 +57,7 @@ public class Order : AggregateRoot<OrderId>
     /// <returns>The order</returns>
     public static Order Create(BuyId buyId, Address address)
     {
-        var order = new Order
-        {
-            Status = OrderStatus.Draft, CreatedAt = DateTime.UtcNow
-        };
-
+        var order = new Order();
         order.Apply(new OrderCreatedEvent(buyId, address));
         return order;
     }
@@ -86,20 +82,18 @@ public class Order : AggregateRoot<OrderId>
                              string category,
                              string specialInstructions)
     {
-        Apply
+        var orderItemAddedEvent = new OrderItemAddedEvent
         (
-            new OrderItemAddedEvent
-            (
-                menuItemId, 
-                menuItemName, 
-                quantity, 
-                unitPrice, 
-                description, 
-                options, 
-                category, 
-                specialInstructions
-            )
+            menuItemId,
+            menuItemName,
+            quantity,
+            unitPrice,
+            description,
+            options,
+            category,
+            specialInstructions
         );
+        Apply(orderItemAddedEvent);
     }
 
 
@@ -112,9 +106,7 @@ public class Order : AggregateRoot<OrderId>
         {
             throw new InvalidOperationException("訂單狀態不是處於待處理，無法接受訂單。");
         }
-
-        Status = OrderStatus.Accepted;
-
+        
         Apply(new OrderMarkedAsAcceptedEvent(Id));
     }
 
@@ -124,6 +116,32 @@ public class Order : AggregateRoot<OrderId>
     /// <param name="domainEvent">The domain event</param>
     protected override void When(DomainEvent domainEvent)
     {
+
+        switch (domainEvent)
+        {
+            case OrderCreatedEvent orderCreatedEvent:
+                BuyId = orderCreatedEvent.BuyId;
+                Address = Address.FromString(orderCreatedEvent.Address);
+                Status = OrderStatus.Draft;
+                CreatedAt = DateTime.UtcNow;
+                break;
+            
+            case OrderItemAddedEvent orderItemAddedEvent:
+                var existingOrderForMenu = this.OrderItems.SingleOrDefault(o => o.MenuItemId == orderItemAddedEvent.MenuItemId);
+                if (existingOrderForMenu != null)
+                {
+                    this.OrderItems.Remove(existingOrderForMenu);
+                }
+                var orderItem = new OrderItem(Apply);
+                ApplyToEntity(orderItem,orderItemAddedEvent);
+                OrderItems.Add(orderItem);
+                break;
+            
+            case OrderMarkedAsAcceptedEvent orderMarkedAsAcceptedEvent:
+                Status = OrderStatus.Accepted;
+                break;
+            
+        }
     }
 
     /// <summary>
