@@ -14,15 +14,45 @@ public class CommandHandlerDependenciesTests
 
     
     [Fact]
-    public void CommandHandlers_Should_Not_Depend_On_Forbidden_Interfaces()
+    public void CommandHandlers_Should_Not_Depend_On_IArchive()
     {
         IArchRule rule = Types()
             .That().ImplementInterface(typeof(ICommandHandler<,>))
             .Should().NotDependOnAnyTypesThat().ImplementInterface(typeof(IArchive<,>))
-            .OrShould().ImplementInterface(typeof(IProjection<,>))
-            .OrShould().ImplementInterface(typeof(IQueryHandler<,>))
-            .OrShould().ImplementInterface(typeof(ICommandHandler<,>))
-            .Because("CommandHandlers should not depend on IArchive, IProjection ,IQueryHandler, or ICommandHandler interfaces.");
+            .Because("CommandHandlers should not depend on IArchive interface.");
+
+        rule.Check(Architecture);
+    }
+    
+    [Fact]
+    public void CommandHandlers_Should_Not_Depend_On_IProjection()
+    {
+        IArchRule rule = Types()
+            .That().ImplementInterface(typeof(ICommandHandler<,>))
+            .Should().NotDependOnAnyTypesThat().ImplementInterface(typeof(IProjection<,>))
+            .Because("CommandHandlers should not depend on IProjection interface.");
+
+        rule.Check(Architecture);
+    }
+    
+    [Fact]
+    public void CommandHandlers_Should_Not_Depend_On_IQueryHandler()
+    {
+        IArchRule rule = Types()
+            .That().ImplementInterface(typeof(ICommandHandler<,>))
+            .Should().NotDependOnAnyTypesThat().ImplementInterface(typeof(IQueryHandler<,>))
+            .Because("CommandHandlers should not depend on IQueryHandler interface.");
+
+        rule.Check(Architecture);
+    }
+    
+    [Fact]
+    public void CommandHandlers_Should_Not_Depend_On_ICommandHandler()
+    {
+        IArchRule rule = Types()
+            .That().ImplementInterface(typeof(ICommandHandler<,>))
+            .Should().NotDependOnAnyTypesThat().ImplementInterface(typeof(ICommandHandler<,>))
+            .Because("CommandHandlers should not depend on ICommandHandler interface.");
 
         rule.Check(Architecture);
     }
