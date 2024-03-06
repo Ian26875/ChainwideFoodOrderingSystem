@@ -1,4 +1,4 @@
-namespace ChainwideFoodOrderingSystem.SeedWork.DomainModel;
+namespace ChainwideFoodOrderingSystem.SeedWork.Entity;
 
 /// <summary>
 /// The aggregate root class

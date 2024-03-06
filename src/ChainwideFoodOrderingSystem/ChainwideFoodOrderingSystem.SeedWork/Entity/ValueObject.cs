@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Reflection;
 
-namespace ChainwideFoodOrderingSystem.SeedWork.DomainModel;
+namespace ChainwideFoodOrderingSystem.SeedWork.Entity;
 
 /// <summary>
 /// The value object class
