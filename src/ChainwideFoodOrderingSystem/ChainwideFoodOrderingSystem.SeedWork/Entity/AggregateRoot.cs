@@ -6,7 +6,10 @@ namespace ChainwideFoodOrderingSystem.SeedWork.Entity;
 /// <seealso cref="IInternalEventHandler"/>
 public abstract class AggregateRoot<TId> : IInternalEventHandler where TId : ValueObject<TId>
 {
-    public TId Id { get; }
+    /// <summary>
+    /// Gets the value of the id
+    /// </summary>
+    public TId Id { get; protected set; }
     
     /// <summary>
     /// The uncommitted changes
