@@ -27,6 +27,24 @@ public readonly struct ExitCode
     }
 
     /// <summary>
+    /// 判断是否是成功的退出代码。
+    /// </summary>
+    /// <returns>如果是成功的退出代码，则返回 true；否则返回 false。</returns>
+    public bool IsSuccess()
+    {
+        return this.Code.Equals(Success.Code);
+    }
+
+    /// <summary>
+    /// 判断是否是失败的退出代码。
+    /// </summary>
+    /// <returns>如果是失败的退出代码，则返回 true；否则返回 false。</returns>
+    public bool IsFailure()
+    {
+        return this.Code.Equals(Failure.Code);
+    }
+    
+    /// <summary>
     /// 表示成功的退出代碼。
     /// </summary>
     public static readonly ExitCode Success = new ExitCode(0, "成功");

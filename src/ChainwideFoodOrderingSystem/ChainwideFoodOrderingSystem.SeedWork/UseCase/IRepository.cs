@@ -11,6 +11,7 @@ public interface IRepository<TAggregateRoot, in TId>
     where TAggregateRoot : AggregateRoot<TId> 
     where TId : ValueObject<TId>
 {
+    
     /// <summary>
     /// 異步查找指定識別碼的聚合根實體。
     /// </summary>
