@@ -3,6 +3,8 @@ using ArchUnitNET.Domain;
 using ArchUnitNET.Fluent;
 using ArchUnitNET.xUnit;
 using ChainwideFoodOrderingSystem.SeedWork.UseCase;
+using ChainwideFoodOrderingSystem.SeedWork.UseCase.Cqrs.Command;
+using ChainwideFoodOrderingSystem.SeedWork.UseCase.Cqrs.Query;
 using static ArchUnitNET.Fluent.ArchRuleDefinition;
 
 namespace ChainwideFoodOrderingSystem.ArchitectureTests.NamingConventions;
@@ -21,10 +23,10 @@ public class UseCaseLayerConventionsTests
     public void UseCase_InterfaceOfUseCases_Should_End_With_UseCase()
     {
         IArchRule rule = Interfaces()
-            .That().ResideInNamespace(@".*\.UseCase.InputPort.*\",true)
+            .That().ResideInNamespace(@".*\.UseCase.InputPort.*\.",true)
             .And().AreAssignableTo(typeof(IUseCase<,>))
             .Should().HaveNameEndingWith("UseCase")
-            .Because("在UseCase層InputPort資料夾，宣告繼承IUseCase的介面必須以'UseCase'作為命名字尾。")
+            .Because("在UseCase層InputPort資料夾，宣告實作ICommandHandler或IQueryHandler介面，必須以'UseCase'作為命名字尾。")
             .AndShould().HaveNameStartingWith("I")
             .Because("在C#語言中介面命名必須是I為命名開頭。");
 
