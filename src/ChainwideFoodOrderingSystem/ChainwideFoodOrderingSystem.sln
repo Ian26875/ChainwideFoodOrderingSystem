@@ -10,6 +10,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Orders", "Orders", "{0AE198
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{69273634-2C29-444B-848C-5F3EFDF63105}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{8D8F967F-6712-4869-A86A-2180F06603AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChainwideFoodOrderingSystem.ArchitectureTests", "ChainwideFoodOrderingSystem.ArchitectureTests\ChainwideFoodOrderingSystem.ArchitectureTests.csproj", "{EC634AEE-3A0E-4578-BE05-6A067B52FAA2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,10 +32,15 @@ Global
 		{AD18CB1E-6DAF-4564-B736-B0E51DB125D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AD18CB1E-6DAF-4564-B736-B0E51DB125D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AD18CB1E-6DAF-4564-B736-B0E51DB125D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC634AEE-3A0E-4578-BE05-6A067B52FAA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC634AEE-3A0E-4578-BE05-6A067B52FAA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC634AEE-3A0E-4578-BE05-6A067B52FAA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC634AEE-3A0E-4578-BE05-6A067B52FAA2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{D81D4726-7FA7-40BC-9623-54DA36CA5E9F} = {0AE198C3-5862-4A43-8416-1A793726F933}
 		{AD18CB1E-6DAF-4564-B736-B0E51DB125D9} = {0AE198C3-5862-4A43-8416-1A793726F933}
 		{C0E059E5-D0EB-4B1B-930A-5508BBFC6BE0} = {69273634-2C29-444B-848C-5F3EFDF63105}
+		{EC634AEE-3A0E-4578-BE05-6A067B52FAA2} = {8D8F967F-6712-4869-A86A-2180F06603AA}
 	EndGlobalSection
 EndGlobal
