@@ -4,57 +4,45 @@ using ArchUnitNET.Domain;
 using ArchUnitNET.Fluent;
 using ArchUnitNET.xUnit;
 using ChainwideFoodOrderingSystem.SeedWork.UseCase;
+using ChainwideFoodOrderingSystem.SeedWork.UseCase.Cqrs.Command;
+using ChainwideFoodOrderingSystem.SeedWork.UseCase.Cqrs.Query;
 using static ArchUnitNET.Fluent.ArchRuleDefinition;
 
 namespace ChainwideFoodOrderingSystem.ArchitectureTests.ClassEnforcements;
 
 /// <summary>
-/// UseCase 層命名慣例與介面
+/// UseCase 層類別責任與繼承關係
 /// </summary>
-public class UseCaseTests
+public class UseCaseLayerEnforcementTests
 {
     private static readonly Architecture Architecture = ArchitectureTestSetup.Architecture;
     
     /// <summary>
-    /// 測試 UseCase 層的介面命名字尾是否為 UseCase
+    /// 測試 UseCase 層的介面命名是否以 UseCase 結尾，並實作 ICommandHandler 或 IQueryHandler
     /// </summary>
     [Fact]
-    public void UseCase_InterfaceOfUseCases_Should_End_With_UseCase()
+    public void UseCase_Interfaces_Should_End_With_UseCase_And_Implement_Handlers()
     {
-        IArchRule rule = Interfaces()
-            .That().ResideInNamespace(".*\\.UseCase",true)
-            .And().AreAssignableTo(typeof(IUseCase<,>))
-            .Should().HaveNameEndingWith("UseCase")
-            .AndShould().HaveNameStartingWith("I");
+        IArchRule architectureRule = Interfaces()
+            .That().ResideInNamespace(".*\\.InputPort", true)
+            .And().HaveNameEndingWith("UseCase")
+            .Should().ImplementInterface(typeof(ICommandHandler<,>))
+            .OrShould().ImplementInterface(typeof(IQueryHandler<,>));
 
-        rule.Check(Architecture);
+        architectureRule.Check(Architecture);
     }
     
     /// <summary>
-    /// 測試 UseCase 層的 Repository 介面命名字尾是否為 Repository
+    /// 測試 UseCase 層的 Repository 介面命名是否以 Repository 結尾，並實作 IRepository
     /// </summary>
     [Fact]
-    public void UseCase_InterfaceOfRepository_Should_End_With_Repository()
+    public void UseCase_Repository_Interfaces_Should_End_With_Repository_And_Implement_IRepository()
     {
-        IArchRule rule = Interfaces()
-            .That().ResideInNamespace(".*\\.UseCase",true)
-            .And().AreAssignableTo(typeof(IRepository<,>))
-            .Should().HaveNameEndingWith("Repository")
-            .AndShould().HaveNameStartingWith("I");
+        IArchRule architectureRule = Interfaces()
+            .That().ResideInNamespace(".*\\.OutputPort", true)
+            .And().HaveNameEndingWith("Repository")
+            .Should().ImplementInterface(typeof(IRepository<,>));
 
-        rule.Check(Architecture);
-    }
-    
-    /// <summary>
-    /// 測試 UseCase 層的類別命名字尾是否為 UseCase
-    /// </summary>
-    [Fact]
-    public void UseCase_Classes_Should_Naming_End_With_UseCase()
-    {
-        IArchRule rule = Classes()
-            .That().ResideInNamespace(".*\\.UseCase$",true)
-            .Should().HaveNameEndingWith("UseCase");
-
-        rule.Check(Architecture);
+        architectureRule.Check(Architecture);
     }
 }
