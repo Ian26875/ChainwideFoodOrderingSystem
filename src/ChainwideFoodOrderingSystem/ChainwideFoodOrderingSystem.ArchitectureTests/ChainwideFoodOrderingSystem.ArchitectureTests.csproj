@@ -29,4 +29,8 @@
       <ProjectReference Include="..\ChainwideFoodOrderingSystem.SeedWork\ChainwideFoodOrderingSystem.SeedWork.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="LayerDependencies\" />
+    </ItemGroup>
+
 </Project>

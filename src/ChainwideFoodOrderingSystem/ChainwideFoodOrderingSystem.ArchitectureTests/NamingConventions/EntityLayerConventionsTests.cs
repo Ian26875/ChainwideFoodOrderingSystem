@@ -12,10 +12,7 @@ namespace ChainwideFoodOrderingSystem.ArchitectureTests.NamingConventions;
 /// </summary>
 public class EntityLayerConventionsTests
 {
-    private static readonly Architecture Architecture = ArchitectureTestSetup.Architecture;
-                     
-    
-    
+    private static readonly Architecture ProjectArchitecture = CleanArchitectureConfiguration.ProjectArchitecture;
     
     /// <summary>
     /// 強制所有 Entity 層的 DomainEvents 資料夾中的類字尾必須是 Event
@@ -23,11 +20,15 @@ public class EntityLayerConventionsTests
     [Fact]
     public void All_DomainEvents_Should_End_With_Event()
     {
-        IArchRule rule = Classes()
-            .That().ResideInNamespace(".*\\.Entity.DomainEvents", true)
-            .Should().HaveNameEndingWith("Event")
-            .Because("所有的領域事件必須放在DomainEvents資料夾底下，且必須以'Event'作為命名字尾。");
+        foreach (var entityLayerAssembly in CleanArchitectureConfiguration.EntityLayers)
+        {
+            IArchRule rule = Classes()
+                .That().ResideInAssembly(entityLayerAssembly)
+                .And().ResideInNamespace(".*\\.Entity.DomainEvents", true)
+                .Should().HaveNameEndingWith("Event")
+                .Because("所有的領域事件必須放在DomainEvents資料夾底下，且必須以'Event'作為命名字尾。");
 
-        rule.Check(Architecture);
+            rule.Check(ProjectArchitecture);
+        }
     }
 }

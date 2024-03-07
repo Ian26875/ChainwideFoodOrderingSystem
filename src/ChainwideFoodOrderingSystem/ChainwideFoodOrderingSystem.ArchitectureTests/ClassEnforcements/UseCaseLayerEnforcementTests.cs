@@ -1,6 +1,7 @@
 ﻿//add a using directive to ArchUnitNET.Fluent.ArchRuleDefinition to easily define ArchRules
 
 using ArchUnitNET.Domain;
+using ArchUnitNET.Domain.Extensions;
 using ArchUnitNET.Fluent;
 using ArchUnitNET.xUnit;
 using ChainwideFoodOrderingSystem.SeedWork.UseCase;
@@ -15,7 +16,7 @@ namespace ChainwideFoodOrderingSystem.ArchitectureTests.ClassEnforcements;
 /// </summary>
 public class UseCaseLayerEnforcementTests
 {
-    private static readonly Architecture Architecture = ArchitectureTestSetup.Architecture;
+    private static readonly Architecture Architecture = CleanArchitectureConfiguration.ProjectArchitecture;
     
     /// <summary>
     /// 測試 UseCase 層的介面命名是否以 UseCase 結尾，並實作 ICommandHandler 或 IQueryHandler
@@ -26,6 +27,7 @@ public class UseCaseLayerEnforcementTests
         IArchRule architectureRule = Interfaces()
             .That().ResideInNamespace(".*\\.InputPort", true)
             .And().HaveNameEndingWith("UseCase")
+            .And().ImplementInterface(typeof(IUseCase<,>))
             .Should().ImplementInterface(typeof(ICommandHandler<,>))
             .OrShould().ImplementInterface(typeof(IQueryHandler<,>))
             .Because("InputPort 層中的 UseCase 介面應該以 UseCase 結尾並實作 ICommandHandler 或 IQueryHandler");

@@ -10,7 +10,7 @@ namespace ChainwideFoodOrderingSystem.ArchitectureTests.ClassEnforcements;
 
 public class EntityLayerEnforcementTests
 {
-    private static readonly Architecture Architecture = ArchitectureTestSetup.Architecture;
+    private static readonly Architecture Architecture = CleanArchitectureConfiguration.ProjectArchitecture;
 
     
     /// <summary>
@@ -19,12 +19,16 @@ public class EntityLayerEnforcementTests
     [Fact]
     public void DomainEvents_In_EntityLayer_Should_Inherit_DomainEvent()
     {
-        IArchRule architectureRule = Classes()
-            .That().ResideInNamespace(".*\\.Entity.DomainEvents", true)
-            .Should().BeAssignableTo(typeof(DomainEvent))
-            .Because("Entity 層中的 DomainEvents 應該繼承於 DomainEvent");;
+        foreach (var entityLayerAssembly in CleanArchitectureConfiguration.EntityLayers)
+        {
+            IArchRule architectureRule = Classes()
+                .That().ResideInAssembly(entityLayerAssembly)
+                .And().ResideInNamespace(".*\\.Entity.DomainEvents", true)
+                .Should().BeAssignableTo(typeof(DomainEvent))
+                .Because("Entity 層中的 DomainEvents 應該繼承於 DomainEvent");;
 
-        architectureRule.Check(Architecture);
+            architectureRule.Check(Architecture);
+        }
     }
     
     /// <summary>
@@ -33,14 +37,17 @@ public class EntityLayerEnforcementTests
     [Fact]
     public void Classes_In_EntityLayer_Should_Inherit_BaseTypes()
     {
-        IArchRule architectureRule = Classes()
-            .That().ResideInNamespace(".*\\.Entity$", true)
-            .Should().BeAssignableTo(typeof(AggregateRoot<>))
-            .OrShould().BeAssignableTo(typeof(Entity<>))
-            .OrShould().BeAssignableTo(typeof(ValueObject<>))
-            .Because("Entity 層中的類別應該繼承於基本類型 AggregateRoot、Entity 或 ValueObject");
+        foreach (var entityLayerAssembly in CleanArchitectureConfiguration.EntityLayers)
+        {
+            IArchRule architectureRule = Classes()
+                .That().ResideInAssembly(entityLayerAssembly)
+                .Should().BeAssignableTo(typeof(AggregateRoot<>))
+                .OrShould().BeAssignableTo(typeof(Entity<>))
+                .OrShould().BeAssignableTo(typeof(ValueObject<>))
+                .Because("Entity 層中的類別應該繼承於基本類型 AggregateRoot、Entity 或 ValueObject");
 
-        architectureRule.Check(Architecture);
+            architectureRule.Check(Architecture);
+        }
     }
 
 }
