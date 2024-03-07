@@ -21,10 +21,12 @@ public class UseCaseLayerConventionsTests
     public void UseCase_InterfaceOfUseCases_Should_End_With_UseCase()
     {
         IArchRule rule = Interfaces()
-            .That().ResideInNamespace(".*\\.UseCase",true)
+            .That().ResideInNamespace(@".*\.UseCase.InputPort.*\",true)
             .And().AreAssignableTo(typeof(IUseCase<,>))
             .Should().HaveNameEndingWith("UseCase")
-            .AndShould().HaveNameStartingWith("I");
+            .Because("在UseCase層InputPort資料夾，宣告繼承IUseCase的介面必須以'UseCase'作為命名字尾。")
+            .AndShould().HaveNameStartingWith("I")
+            .Because("在C#語言中介面命名必須是I為命名開頭。");
 
         rule.Check(Architecture);
     }
@@ -36,10 +38,12 @@ public class UseCaseLayerConventionsTests
     public void UseCase_InterfaceOfRepository_Should_End_With_Repository()
     {
         IArchRule rule = Interfaces()
-            .That().ResideInNamespace(".*\\.UseCase",true)
+            .That().ResideInNamespace(".*\\.UseCase.OutputPort$",true)
             .And().AreAssignableTo(typeof(IRepository<,>))
             .Should().HaveNameEndingWith("Repository")
-            .AndShould().HaveNameStartingWith("I");
+            .Because("在UseCase層OutputPort資料夾，宣告繼承IRepository的介面必須以'Repository'作為命名字尾。")
+            .AndShould().HaveNameStartingWith("I")
+            .Because("在C#語言中介面命名必須是I為命名開頭。");
 
         rule.Check(Architecture);
     }
@@ -52,7 +56,8 @@ public class UseCaseLayerConventionsTests
     {
         IArchRule rule = Classes()
             .That().ResideInNamespace(".*\\.UseCase$",true)
-            .Should().HaveNameEndingWith("UseCase");
+            .Should().HaveNameEndingWith("UseCase")
+            .Because("在UseCase層的根目錄中實作類別，必須以'UseCase'作為命名字尾。");
 
         rule.Check(Architecture);
     }

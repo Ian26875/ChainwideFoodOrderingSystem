@@ -25,7 +25,8 @@ public class EntityLayerConventionsTests
     {
         IArchRule rule = Classes()
             .That().ResideInNamespace(".*\\.Entity.DomainEvents", true)
-            .Should().HaveNameEndingWith("Event");
+            .Should().HaveNameEndingWith("Event")
+            .Because("所有的領域事件必須放在DomainEvents資料夾底下，且必須以'Event'作為命名字尾。");
 
         rule.Check(Architecture);
     }
