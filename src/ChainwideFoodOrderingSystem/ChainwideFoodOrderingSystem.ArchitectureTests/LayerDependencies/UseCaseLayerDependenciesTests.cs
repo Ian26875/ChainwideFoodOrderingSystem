@@ -20,7 +20,8 @@ public class UseCaseLayerDependenciesTests
         IArchRule rule = Types()
             .That().ResideInAssembly(ArchitectureTestSetup.Orders.UseCaseLayerAssembly)
             .Should().OnlyDependOnTypesThat()
-            .ResideInAssembly(ArchitectureTestSetup.Orders.EntityLayerAssembly);
+            .ResideInAssembly(ArchitectureTestSetup.Orders.EntityLayerAssembly)
+            .Because("UseCase 層應該依賴於 Entity 層");
         
         rule.Check(Architecture);
     }

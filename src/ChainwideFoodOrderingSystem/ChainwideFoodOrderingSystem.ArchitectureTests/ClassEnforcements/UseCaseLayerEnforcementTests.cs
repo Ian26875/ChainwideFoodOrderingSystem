@@ -27,7 +27,8 @@ public class UseCaseLayerEnforcementTests
             .That().ResideInNamespace(".*\\.InputPort", true)
             .And().HaveNameEndingWith("UseCase")
             .Should().ImplementInterface(typeof(ICommandHandler<,>))
-            .OrShould().ImplementInterface(typeof(IQueryHandler<,>));
+            .OrShould().ImplementInterface(typeof(IQueryHandler<,>))
+            .Because("InputPort 層中的 UseCase 介面應該以 UseCase 結尾並實作 ICommandHandler 或 IQueryHandler");
 
         architectureRule.Check(Architecture);
     }
@@ -41,7 +42,8 @@ public class UseCaseLayerEnforcementTests
         IArchRule architectureRule = Interfaces()
             .That().ResideInNamespace(".*\\.OutputPort", true)
             .And().HaveNameEndingWith("Repository")
-            .Should().ImplementInterface(typeof(IRepository<,>));
+            .Should().ImplementInterface(typeof(IRepository<,>))
+            .Because("OutputPort 層中的 Repository 介面應該以 Repository 結尾並實作 IRepository");
 
         architectureRule.Check(Architecture);
     }

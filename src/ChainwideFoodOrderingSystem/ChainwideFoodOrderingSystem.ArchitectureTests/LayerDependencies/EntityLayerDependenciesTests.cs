@@ -19,7 +19,8 @@ public class EntityLayerDependenciesTests
         IArchRule rule = Types()
             .That().ResideInAssembly(ArchitectureTestSetup.Orders.EntityLayerAssembly)
             .Should().OnlyDependOnTypesThat().ResideInAssembly(ArchitectureTestSetup.SeedWorkAssembly)
-            .OrShould().ResideInNamespace("System.*", true);
+            .OrShould().ResideInNamespace("System.*", true)
+            .Because("Entity 層應該只依賴於 SeedWork 類別庫和系統命名空間");
 
         rule.Check(Architecture);
     }

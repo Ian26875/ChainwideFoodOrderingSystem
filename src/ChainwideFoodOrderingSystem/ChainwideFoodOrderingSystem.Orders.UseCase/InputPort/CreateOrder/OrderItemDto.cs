@@ -31,12 +31,7 @@ public class OrderItemDto
     /// 餐點的選項或變體，例如「不要洋蔥」或「加辣」
     /// </summary>
     public string Options { get; set; }
-
-    /// <summary>
-    /// 餐點圖片的 URL
-    /// </summary>
-    public string ImageUrl { get; set; }
-
+    
     /// <summary>
     /// 餐點的分類，如「主菜」、「甜點」、「飲料」等
     /// </summary>

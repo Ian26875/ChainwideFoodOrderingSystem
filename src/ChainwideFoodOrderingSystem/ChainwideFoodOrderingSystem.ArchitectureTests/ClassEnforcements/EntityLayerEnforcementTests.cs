@@ -21,7 +21,8 @@ public class EntityLayerEnforcementTests
     {
         IArchRule architectureRule = Classes()
             .That().ResideInNamespace(".*\\.Entity.DomainEvents", true)
-            .Should().BeAssignableTo(typeof(DomainEvent));
+            .Should().BeAssignableTo(typeof(DomainEvent))
+            .Because("Entity 層中的 DomainEvents 應該繼承於 DomainEvent");;
 
         architectureRule.Check(Architecture);
     }
@@ -36,7 +37,8 @@ public class EntityLayerEnforcementTests
             .That().ResideInNamespace(".*\\.Entity$", true)
             .Should().BeAssignableTo(typeof(AggregateRoot<>))
             .OrShould().BeAssignableTo(typeof(Entity<>))
-            .OrShould().BeAssignableTo(typeof(ValueObject<>));
+            .OrShould().BeAssignableTo(typeof(ValueObject<>))
+            .Because("Entity 層中的類別應該繼承於基本類型 AggregateRoot、Entity 或 ValueObject");
 
         architectureRule.Check(Architecture);
     }
