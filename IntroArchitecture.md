@@ -43,7 +43,11 @@
 在架構測試裡面分成四個資料夾。
 
 * ClassDependencies:類別依賴
+    * Entity
 
+    * UseCase
+        - CommandHandler的UseCase實作，不能依賴`IArchive.cs`, `IProjection.cs` ,`IQueryHandler.cs` 及 `ICommandHandler.cs`.
+        - QueryHandler的UseCase實作，不能依賴`IInquiry.cs`, `IRepository.cs` ,`IQueryHandler.cs` 及 `ICommandHandler.cs`.
 
 * ClassEnforcements:類別執行、類別職責
     
@@ -77,18 +81,4 @@
         - UseCase 層的介面命名字尾為 UseCase
         - UseCase 層中類別實作 `IUseCase.cs` 類別命名字尾為 UseCase
         - UseCase 層中宣告 Repository 介面命名字尾為 Repository
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
