@@ -1,0 +1,11 @@
+﻿{
+  "ApplicationAssemblies": {
+    "SeedWork": "ChainwideFoodOrderingSystem.SeedWork",
+    "Modules": {
+      "Orders": {
+        "EntityLayer": "ChainwideFoodOrderingSystem.Orders.Entity",
+        "UseCaseLayer": "ChainwideFoodOrderingSystem.Orders.UseCase"
+      }
+    }
+  }
+}

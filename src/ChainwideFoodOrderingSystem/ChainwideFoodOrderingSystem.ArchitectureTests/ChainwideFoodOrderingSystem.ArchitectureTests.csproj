@@ -10,6 +10,8 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.7.1"/>
         <PackageReference Include="TngTech.ArchUnitNET.xUnit" Version="0.10.6" />
         <PackageReference Include="xunit" Version="2.4.2"/>
@@ -27,6 +29,12 @@
       <ProjectReference Include="..\ChainwideFoodOrderingSystem.Orders.Entity\ChainwideFoodOrderingSystem.Orders.Entity.csproj" />
       <ProjectReference Include="..\ChainwideFoodOrderingSystem.Orders.UseCase\ChainwideFoodOrderingSystem.Orders.UseCase.csproj" />
       <ProjectReference Include="..\ChainwideFoodOrderingSystem.SeedWork\ChainwideFoodOrderingSystem.SeedWork.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Update="architectureSettings.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
 
 </Project>

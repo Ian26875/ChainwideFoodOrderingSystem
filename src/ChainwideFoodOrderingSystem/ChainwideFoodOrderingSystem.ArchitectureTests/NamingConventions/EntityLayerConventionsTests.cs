@@ -2,7 +2,6 @@
 using ArchUnitNET.Domain;
 using ArchUnitNET.Fluent;
 using ArchUnitNET.xUnit;
-using ChainwideFoodOrderingSystem.SeedWork.Entity;
 using static ArchUnitNET.Fluent.ArchRuleDefinition;
 
 namespace ChainwideFoodOrderingSystem.ArchitectureTests.NamingConventions;

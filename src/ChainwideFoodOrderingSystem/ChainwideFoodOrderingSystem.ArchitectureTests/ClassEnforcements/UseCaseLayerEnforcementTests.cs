@@ -1,7 +1,6 @@
 ﻿//add a using directive to ArchUnitNET.Fluent.ArchRuleDefinition to easily define ArchRules
 
 using ArchUnitNET.Domain;
-using ArchUnitNET.Domain.Extensions;
 using ArchUnitNET.Fluent;
 using ArchUnitNET.xUnit;
 using ChainwideFoodOrderingSystem.SeedWork.UseCase;

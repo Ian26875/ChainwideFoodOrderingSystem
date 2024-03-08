@@ -18,7 +18,7 @@ public static class CleanArchitectureSetup
         {
             var assemblies = new List<Assembly>
             {
-                ApplicationAssemblies.SeedWorkAssembly
+                ProjectAssemblyConfiguration.SeedWorkAssembly
             };
 
             assemblies.AddRange(UseCaseLayerAssemblies);
@@ -35,7 +35,8 @@ public static class CleanArchitectureSetup
     {
         get
         {
-            return ApplicationAssemblies.AllModuleAssemblies.Select(m => m.UseCaseLayerAssembly)
+            return ProjectAssemblyConfiguration.AllModuleAssemblies.Values
+                                                            .Select(m => m.UseCaseLayerAssembly)
                                                             .ToArray();
         }
     }
@@ -47,7 +48,8 @@ public static class CleanArchitectureSetup
     {
         get
         {
-            return ApplicationAssemblies.AllModuleAssemblies.Select(m => m.EntityLayerAssembly)
+            return ProjectAssemblyConfiguration.AllModuleAssemblies.Values
+                                                            .Select(m => m.EntityLayerAssembly)
                                                             .ToArray();
         }
     }
