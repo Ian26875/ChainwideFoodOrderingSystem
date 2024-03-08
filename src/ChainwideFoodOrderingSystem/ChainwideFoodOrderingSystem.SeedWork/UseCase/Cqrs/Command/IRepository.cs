@@ -1,6 +1,6 @@
 ﻿using ChainwideFoodOrderingSystem.SeedWork.Entity;
 
-namespace ChainwideFoodOrderingSystem.SeedWork.UseCase;
+namespace ChainwideFoodOrderingSystem.SeedWork.UseCase.Cqrs.Command;
 
 /// <summary>
 /// 定義一個存儲庫的接口，用於存取和管理聚合根實體。

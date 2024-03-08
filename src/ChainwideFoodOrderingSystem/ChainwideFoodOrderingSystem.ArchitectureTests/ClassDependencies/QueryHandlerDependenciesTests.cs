@@ -17,11 +17,11 @@ public class QueryHandlerDependenciesTests
     {
         IArchRule rule = Types()
             .That().ImplementInterface(typeof(IQueryHandler<,>))
-            .Should().NotDependOnAnyTypesThat()
-            .ImplementInterface(typeof(IInquiry<,>))
+            .Should().NotDependOnAnyTypesThat().ImplementInterface(typeof(IInquiry<,>))
+            .OrShould().ImplementInterface(typeof(IRepository<,>))
             .OrShould().ImplementInterface(typeof(IQueryHandler<,>))
             .OrShould().ImplementInterface(typeof(ICommandHandler<,>))
-            .Because("QueryHandler should not depend on IInquiry, IQueryHandler, or ICommandHandler interfaces.");
+            .Because("QueryHandler should not depend on IInquiry, IRepository, IQueryHandler, or ICommandHandler interfaces.");
 
         rule.Check(Architecture);
     }

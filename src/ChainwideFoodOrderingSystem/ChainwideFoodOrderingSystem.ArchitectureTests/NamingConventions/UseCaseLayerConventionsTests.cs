@@ -3,6 +3,7 @@ using ArchUnitNET.Domain;
 using ArchUnitNET.Fluent;
 using ArchUnitNET.xUnit;
 using ChainwideFoodOrderingSystem.SeedWork.UseCase;
+using ChainwideFoodOrderingSystem.SeedWork.UseCase.Cqrs.Command;
 using static ArchUnitNET.Fluent.ArchRuleDefinition;
 
 namespace ChainwideFoodOrderingSystem.ArchitectureTests.NamingConventions;

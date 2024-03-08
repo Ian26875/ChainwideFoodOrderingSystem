@@ -1,7 +1,6 @@
 ﻿using ArchUnitNET.Domain;
 using ArchUnitNET.Fluent;
 using ArchUnitNET.xUnit;
-using ChainwideFoodOrderingSystem.SeedWork.UseCase;
 using ChainwideFoodOrderingSystem.SeedWork.UseCase.Cqrs.Command;
 using ChainwideFoodOrderingSystem.SeedWork.UseCase.Cqrs.Query;
 using static ArchUnitNET.Fluent.ArchRuleDefinition;
@@ -19,11 +18,11 @@ public class CommandHandlerDependenciesTests
     {
         IArchRule rule = Types()
             .That().ImplementInterface(typeof(ICommandHandler<,>))
-            .Should().NotDependOnAnyTypesThat()
-            .ImplementInterface(typeof(IArchive<,>))
+            .Should().NotDependOnAnyTypesThat().ImplementInterface(typeof(IArchive<,>))
+            .OrShould().ImplementInterface(typeof(IProjection<,>))
             .OrShould().ImplementInterface(typeof(IQueryHandler<,>))
             .OrShould().ImplementInterface(typeof(ICommandHandler<,>))
-            .Because("CommandHandlers should not depend on IArchive, IQueryHandler, or ICommandHandler interfaces.");
+            .Because("CommandHandlers should not depend on IArchive, IProjection ,IQueryHandler, or ICommandHandler interfaces.");
 
         rule.Check(Architecture);
     }
