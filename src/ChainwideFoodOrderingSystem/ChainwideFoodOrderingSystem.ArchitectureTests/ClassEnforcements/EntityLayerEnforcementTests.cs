@@ -10,7 +10,7 @@ namespace ChainwideFoodOrderingSystem.ArchitectureTests.ClassEnforcements;
 
 public class EntityLayerEnforcementTests
 {
-    private static readonly Architecture Architecture = CleanArchitectureConfiguration.ProjectArchitecture;
+    private static readonly Architecture Architecture = CleanArchitectureSetup.ArchitectureForTesting;
 
     
     /// <summary>
@@ -19,7 +19,7 @@ public class EntityLayerEnforcementTests
     [Fact]
     public void DomainEvents_In_EntityLayer_Should_Inherit_DomainEvent()
     {
-        foreach (var entityLayerAssembly in CleanArchitectureConfiguration.EntityLayers)
+        foreach (var entityLayerAssembly in CleanArchitectureSetup.EntityLayerAssemblies)
         {
             IArchRule architectureRule = Classes()
                 .That().ResideInAssembly(entityLayerAssembly)
@@ -37,7 +37,7 @@ public class EntityLayerEnforcementTests
     [Fact]
     public void Classes_In_EntityLayer_Should_Inherit_BaseTypes()
     {
-        foreach (var entityLayerAssembly in CleanArchitectureConfiguration.EntityLayers)
+        foreach (var entityLayerAssembly in CleanArchitectureSetup.EntityLayerAssemblies)
         {
             IArchRule architectureRule = Classes()
                 .That().ResideInAssembly(entityLayerAssembly)

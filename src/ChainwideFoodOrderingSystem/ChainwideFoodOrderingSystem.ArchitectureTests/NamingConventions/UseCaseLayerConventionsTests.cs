@@ -14,7 +14,7 @@ namespace ChainwideFoodOrderingSystem.ArchitectureTests.NamingConventions;
 /// </summary>
 public class UseCaseLayerConventionsTests
 {
-    private static readonly Architecture ProjectArchitecture = CleanArchitectureConfiguration.ProjectArchitecture;
+    private static readonly Architecture ProjectArchitecture = CleanArchitectureSetup.ArchitectureForTesting;
     
     /// <summary>
     /// 測試 UseCase 層的介面命名字尾是否為 UseCase
@@ -22,7 +22,7 @@ public class UseCaseLayerConventionsTests
     [Fact]
     public void UseCase_InterfaceOfUseCases_Should_End_With_UseCase()
     {
-        foreach (var useCaseLayerAssembly in CleanArchitectureConfiguration.UseCaseLayers)
+        foreach (var useCaseLayerAssembly in CleanArchitectureSetup.UseCaseLayerAssemblies)
         {
             IArchRule architectureRule = Interfaces()
                 .That().ResideInAssembly(useCaseLayerAssembly)
@@ -42,7 +42,7 @@ public class UseCaseLayerConventionsTests
     [Fact]
     public void UseCase_InterfaceOfRepository_Should_End_With_Repository()
     {
-        foreach (var useCaseLayerAssembly in CleanArchitectureConfiguration.UseCaseLayers)
+        foreach (var useCaseLayerAssembly in CleanArchitectureSetup.UseCaseLayerAssemblies)
         {
             IArchRule rule = Interfaces()
                 .That().ResideInAssembly(useCaseLayerAssembly)
@@ -63,7 +63,7 @@ public class UseCaseLayerConventionsTests
     [Fact]
     public void UseCase_Classes_Should_Naming_End_With_UseCase()
     {
-        foreach (var useCaseLayerAssembly in CleanArchitectureConfiguration.UseCaseLayers)
+        foreach (var useCaseLayerAssembly in CleanArchitectureSetup.UseCaseLayerAssemblies)
         {
             IArchRule rule = Classes()
                 .That().ResideInAssembly(useCaseLayerAssembly)

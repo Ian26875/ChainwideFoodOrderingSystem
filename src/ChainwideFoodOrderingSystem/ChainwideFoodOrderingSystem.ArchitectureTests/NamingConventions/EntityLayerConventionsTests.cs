@@ -12,7 +12,7 @@ namespace ChainwideFoodOrderingSystem.ArchitectureTests.NamingConventions;
 /// </summary>
 public class EntityLayerConventionsTests
 {
-    private static readonly Architecture ProjectArchitecture = CleanArchitectureConfiguration.ProjectArchitecture;
+    private static readonly Architecture ProjectArchitecture = CleanArchitectureSetup.ArchitectureForTesting;
     
     /// <summary>
     /// 強制所有 Entity 層的 DomainEvents 資料夾中的類字尾必須是 Event
@@ -20,7 +20,7 @@ public class EntityLayerConventionsTests
     [Fact]
     public void All_DomainEvents_Should_End_With_Event()
     {
-        foreach (var entityLayerAssembly in CleanArchitectureConfiguration.EntityLayers)
+        foreach (var entityLayerAssembly in CleanArchitectureSetup.EntityLayerAssemblies)
         {
             IArchRule rule = Classes()
                 .That().ResideInAssembly(entityLayerAssembly)
