@@ -1,22 +1,24 @@
 ﻿//add a using directive to ArchUnitNET.Fluent.ArchRuleDefinition to easily define ArchRules
+
 using ArchUnitNET.Domain;
 using ArchUnitNET.Fluent;
 using ArchUnitNET.xUnit;
 using ChainwideFoodOrderingSystem.SeedWork.UseCase;
 using ChainwideFoodOrderingSystem.SeedWork.UseCase.Cqrs.Command;
+using ChainwideFoodOrderingSystem.SeedWork.UseCase.Cqrs.Query;
 using static ArchUnitNET.Fluent.ArchRuleDefinition;
 
 namespace ChainwideFoodOrderingSystem.ArchitectureTests.NamingConventions;
 
 /// <summary>
-/// UseCase 層命名慣例與介面
+///     UseCase 層命名慣例與介面
 /// </summary>
 public class UseCaseLayerConventionsTests
 {
     private static readonly Architecture ProjectArchitecture = CleanArchitectureSetup.ArchitectureForTesting;
-    
+
     /// <summary>
-    /// 測試 UseCase 層的介面命名字尾是否為 UseCase
+    ///     測試 UseCase 層的介面命名字尾是否為 UseCase
     /// </summary>
     [Fact]
     public void UseCase_InterfaceOfUseCases_Should_End_With_UseCase()
@@ -34,9 +36,9 @@ public class UseCaseLayerConventionsTests
             architectureRule.Check(ProjectArchitecture);
         }
     }
-    
+
     /// <summary>
-    /// 測試 UseCase 層的 Repository 介面命名字尾是否為 Repository
+    ///     測試 UseCase 層的 Repository 介面命名字尾是否為 Repository
     /// </summary>
     [Fact]
     public void UseCase_InterfaceOfRepository_Should_End_With_Repository()
@@ -48,16 +50,81 @@ public class UseCaseLayerConventionsTests
                 .And().ResideInNamespace(".*\\.OutputPort$", true)
                 .And().AreAssignableTo(typeof(IRepository<,>))
                 .Should().HaveNameEndingWith("Repository")
-                .Because("在 UseCase 層 InputPort 資料夾，宣告繼承 IRepository 的介面必須以 'Repository' 作為命名字尾。")
+                .Because("在 UseCase 層 OutputPort 資料夾，宣告繼承 IRepository 的介面必須以 'Repository' 作為命名字尾。")
                 .AndShould().HaveNameStartingWith("I")
                 .Because("在 C# 語言中介面命名必須是 I 為命名開頭。");
 
             rule.Check(ProjectArchitecture);
         }
     }
-    
+
+
     /// <summary>
-    /// 測試 UseCase 層的類別命名字尾是否為 UseCase
+    ///     測試 UseCase 層的 Repository 介面命名字尾是否為 Repository
+    /// </summary>
+    [Fact]
+    public void UseCase_InterfaceOfProjection_Should_End_With_Projection()
+    {
+        foreach (var useCaseLayerAssembly in CleanArchitectureSetup.UseCaseLayerAssemblies)
+        {
+            IArchRule rule = Interfaces()
+                .That().ResideInAssembly(useCaseLayerAssembly)
+                .And().ResideInNamespace(".*\\.OutputPort$", true)
+                .And().AreAssignableTo(typeof(IProjection<,>))
+                .Should().HaveNameEndingWith("Projection")
+                .Because("在 UseCase 層 OutputPort 資料夾，宣告繼承 IProjection 的介面必須以 'Projection' 作為命名字尾。")
+                .AndShould().HaveNameStartingWith("I")
+                .Because("在 C# 語言中介面命名必須是 I 為命名開頭。");
+
+            rule.Check(ProjectArchitecture);
+        }
+    }
+
+    /// <summary>
+    ///     測試 UseCase 層的 Repository 介面命名字尾是否為 Repository
+    /// </summary>
+    [Fact]
+    public void UseCase_InterfaceOfInquiry_Should_End_With_Inquiry()
+    {
+        foreach (var useCaseLayerAssembly in CleanArchitectureSetup.UseCaseLayerAssemblies)
+        {
+            IArchRule rule = Interfaces()
+                .That().ResideInAssembly(useCaseLayerAssembly)
+                .And().ResideInNamespace(".*\\.OutputPort$", true)
+                .And().AreAssignableTo(typeof(IInquiry<,>))
+                .Should().HaveNameEndingWith("Inquiry")
+                .Because("在 UseCase 層 Output 資料夾，宣告繼承 IInquiry 的介面必須以 'Inquiry' 作為命名字尾。")
+                .AndShould().HaveNameStartingWith("I")
+                .Because("在 C# 語言中介面命名必須是 I 為命名開頭。");
+
+            rule.Check(ProjectArchitecture);
+        }
+    }
+
+    /// <summary>
+    ///     測試 UseCase 層的 Repository 介面命名字尾是否為 Repository
+    /// </summary>
+    [Fact]
+    public void UseCase_InterfaceOfArchive_Should_End_With_Archive()
+    {
+        foreach (var useCaseLayerAssembly in CleanArchitectureSetup.UseCaseLayerAssemblies)
+        {
+            IArchRule rule = Interfaces()
+                .That().ResideInAssembly(useCaseLayerAssembly)
+                .And().ResideInNamespace(".*\\.OutputPort$", true)
+                .And().AreAssignableTo(typeof(IArchive<,>))
+                .Should().HaveNameEndingWith("Archive")
+                .Because("在 UseCase 層 Output 資料夾，宣告繼承 IArchive 的介面必須以 'Archive' 作為命名字尾。")
+                .AndShould().HaveNameStartingWith("I")
+                .Because("在 C# 語言中介面命名必須是 I 為命名開頭。");
+
+            rule.Check(ProjectArchitecture);
+        }
+    }
+
+
+    /// <summary>
+    ///     測試 UseCase 層的類別命名字尾是否為 UseCase
     /// </summary>
     [Fact]
     public void UseCase_Classes_Should_Naming_End_With_UseCase()
