@@ -5,12 +5,12 @@ namespace ChainwideFoodOrderingSystem.SeedWork.UseCase;
 /// <summary>
 /// The self validatable class
 /// </summary>
-public abstract class SelfValidatable
+public abstract class SelfValidating
 {
     /// <summary>
     /// Ensures the valid
     /// </summary>
-    protected void EnsureValid()
+    protected void ValidateSelf()
     {
         var validationContext = new ValidationContext(this);
 

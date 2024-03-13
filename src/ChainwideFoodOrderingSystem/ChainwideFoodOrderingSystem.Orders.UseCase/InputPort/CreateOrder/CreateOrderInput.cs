@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using ChainwideFoodOrderingSystem.SeedWork.UseCase;
 
 namespace ChainwideFoodOrderingSystem.Orders.UseCase.InputPort.CreateOrder;
@@ -24,11 +25,13 @@ public class CreateOrderInput : Input
     /// <summary>
     ///     Gets the value of the buy id
     /// </summary>
+    [Range(0, int.MaxValue)]
     public int BuyId { get; }
 
     /// <summary>
     ///     Gets the value of the address
     /// </summary>
+    [StringLength(100)]
     public string Address { get; }
 
     /// <summary>
