@@ -21,8 +21,10 @@ public class EntityLayerDependenciesTests
         {
             IArchRule rule = Types()
                 .That().ResideInAssembly(moduleAssemblies.EntityLayerAssembly)
+                .As("EntityLayer")
                 .Should().OnlyDependOnTypesThat()
                 .ResideInAssembly(ProjectAssemblyConfiguration.SeedWorkAssembly)
+                .As("SeedWorkLayer")
                 .OrShould().ResideInNamespace("System.*", true)
                 .Because("Entity 層應該只依賴於 SeedWork 類別庫和 System 命名空間中的類型");
 

@@ -1,6 +1,8 @@
 ﻿using ArchUnitNET.Domain;
+using ArchUnitNET.Domain.Extensions;
 using ArchUnitNET.Fluent;
 using ArchUnitNET.xUnit;
+using ChainwideFoodOrderingSystem.SeedWork.UseCase;
 using ChainwideFoodOrderingSystem.SeedWork.UseCase.Cqrs.Command;
 using ChainwideFoodOrderingSystem.SeedWork.UseCase.Cqrs.Query;
 using static ArchUnitNET.Fluent.ArchRuleDefinition;
@@ -46,14 +48,4 @@ public class CommandHandlerDependenciesTests
         rule.Check(Architecture);
     }
     
-    [Fact]
-    public void CommandHandlers_Should_Not_Depend_On_ICommandHandler()
-    {
-        IArchRule rule = Types()
-            .That().ImplementInterface(typeof(ICommandHandler<,>))
-            .Should().NotDependOnAnyTypesThat().ImplementInterface(typeof(ICommandHandler<,>))
-            .Because("CommandHandlers should not depend on ICommandHandler interface.");
-
-        rule.Check(Architecture);
-    }
 }

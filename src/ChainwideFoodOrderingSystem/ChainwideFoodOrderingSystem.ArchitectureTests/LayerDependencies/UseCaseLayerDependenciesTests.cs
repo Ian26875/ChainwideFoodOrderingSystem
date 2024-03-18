@@ -20,8 +20,10 @@ public class UseCaseLayerDependenciesTests
         {
             IArchRule rule = Types()
                 .That().ResideInAssembly(moduleAssemblies.UseCaseLayerAssembly)
+                .As("UseCaseLayer")
                 .Should().OnlyDependOnTypesThat()
                 .ResideInAssembly(moduleAssemblies.EntityLayerAssembly)
+                .As("EntityLayer")
                 .OrShould().ResideInAssembly(ProjectAssemblyConfiguration.SeedWorkAssembly)
                 .OrShould().ResideInNamespace("System.*", true)
                 .Because("UseCase 層應該只依賴於 SeedWork 類別庫、Entity 層和 System 命名空間中的類型");
