@@ -45,6 +45,7 @@ public class CreateOrderUseCase : ICreateOrderUseCase
 
         var order = Order.Create
         (
+            Guid.NewGuid(),
             input.BuyId,
             Address.FromString(input.Address)
         );

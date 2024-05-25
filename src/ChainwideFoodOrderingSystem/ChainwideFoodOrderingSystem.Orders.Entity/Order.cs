@@ -13,6 +13,7 @@ public class Order : AggregateRoot<OrderId>
     /// </summary>
     private Order()
     {
+        this.OrderItems = new List<OrderItem>();
     }
 
     /// <summary>
@@ -49,17 +50,11 @@ public class Order : AggregateRoot<OrderId>
     {
         return OrderItems.Sum(o => o.Quantity * o.UnitPrice);
     }
-
-    /// <summary>
-    ///     Creates the buy id
-    /// </summary>
-    /// <param name="buyId">The buy id</param>
-    /// <param name="address">The address</param>
-    /// <returns>The order</returns>
-    public static Order Create(BuyId buyId, Address address)
+    
+    public static Order Create(OrderId orderId,BuyId buyId, Address address)
     {
         var order = new Order();
-        order.Apply(new OrderCreatedEvent(buyId, address));
+        order.Apply(new OrderCreatedEvent(orderId, buyId, address));
         return order;
     }
 
@@ -85,7 +80,7 @@ public class Order : AggregateRoot<OrderId>
     {
         var orderItemAddedEvent = new OrderItemAddedEvent
         (
-           Id,
+            this.Id,
             menuItemId,
             menuItemName,
             quantity,
@@ -136,6 +131,7 @@ public class Order : AggregateRoot<OrderId>
         switch (domainEvent)
         {
             case OrderCreatedEvent orderCreatedEvent:
+                Id = orderCreatedEvent.OrderId;
                 BuyId = orderCreatedEvent.BuyId;
                 Address = Address.FromString(orderCreatedEvent.Address);
                 Status = OrderStatus.Draft;

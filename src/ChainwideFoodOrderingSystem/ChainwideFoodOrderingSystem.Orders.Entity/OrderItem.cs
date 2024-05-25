@@ -67,6 +67,7 @@ public class OrderItem : Entity<OrderItemId>
         switch (domainEvent)
         {
             case OrderItemAddedEvent orderItemAddedEvent:
+                OrderId = orderItemAddedEvent.OrderId;
                 MenuItemId = orderItemAddedEvent.MenuItemId;
                 MenuItemName = orderItemAddedEvent.MenuItemName;
                 Quantity = orderItemAddedEvent.Quantity;
