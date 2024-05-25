@@ -17,7 +17,7 @@ public interface IRepository<TAggregateRoot, in TId>
     /// </summary>
     /// <param name="id">聚合根的識別碼。</param>
     /// <returns>找到的聚合根實體，如果未找到則返回 null。</returns>
-    Task<TAggregateRoot> FindAsync(TId id);
+    Task<TAggregateRoot?> FindAsync(TId id);
 
     /// <summary>
     /// 異步保存聚合根實體。

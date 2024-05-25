@@ -111,6 +111,20 @@ public class Order : AggregateRoot<OrderId>
     }
 
     /// <summary>
+    ///     將訂單標記為處理中。
+    /// </summary>
+    public void MarkAsPending()
+    {
+        if (Status != OrderStatus.Draft)
+        {
+            throw new InvalidOperationException("訂單狀態不是處於草稿，無法接受訂單。");
+        }
+        
+        Apply(new OrderMarkedAsPendingEvent(Id));
+    }
+    
+    
+    /// <summary>
     ///     Whens the domain event
     /// </summary>
     /// <param name="domainEvent">The domain event</param>
@@ -135,6 +149,10 @@ public class Order : AggregateRoot<OrderId>
                 var orderItem = new OrderItem(Apply);
                 ApplyToEntity(orderItem,orderItemAddedEvent);
                 OrderItems.Add(orderItem);
+                break;
+            
+            case OrderMarkedAsPendingEvent orderMarkedAsPendingEvent:
+                Status = OrderStatus.Pending;
                 break;
             
             case OrderMarkedAsAcceptedEvent orderMarkedAsAcceptedEvent:

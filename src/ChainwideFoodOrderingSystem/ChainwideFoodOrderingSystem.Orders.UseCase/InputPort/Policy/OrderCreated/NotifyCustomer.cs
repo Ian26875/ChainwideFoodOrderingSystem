@@ -6,7 +6,7 @@ namespace ChainwideFoodOrderingSystem.Orders.UseCase.InputPort.Policy.OrderCreat
 public class NotifyCustomer : IEventHandler<OrderCreatedEvent>
 {
     
-    public Task HandleAsync(OrderCreatedEvent domainEvent, CancellationToken cancellationToken)
+    public Task HandleAsync(OrderCreatedEvent domainEvent, CancellationToken cancellationToken =  default)
     {
         throw new NotImplementedException();
     }

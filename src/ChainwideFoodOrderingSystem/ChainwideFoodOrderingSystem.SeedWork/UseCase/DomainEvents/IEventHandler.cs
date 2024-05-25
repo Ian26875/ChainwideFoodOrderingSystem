@@ -14,5 +14,5 @@ public interface IEventHandler<in TDomainEvent> where TDomainEvent : DomainEvent
     /// <param name="domainEvent">要處理的領域事件。</param>
     /// <param name="cancellationToken"></param>
     /// <returns>表示異步處理操作的任務。</returns>
-    Task HandleAsync(TDomainEvent domainEvent,CancellationToken cancellationToken);
+    Task HandleAsync(TDomainEvent domainEvent,CancellationToken cancellationToken = default);
 }
