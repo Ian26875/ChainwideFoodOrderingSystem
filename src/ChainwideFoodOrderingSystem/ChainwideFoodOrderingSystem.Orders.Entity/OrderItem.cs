@@ -16,6 +16,8 @@ public class OrderItem : Entity<OrderItemId>
     {
     }
 
+    public OrderId OrderId { get; private set; }
+
     /// <summary>
     ///     餐點唯一識別碼
     /// </summary>

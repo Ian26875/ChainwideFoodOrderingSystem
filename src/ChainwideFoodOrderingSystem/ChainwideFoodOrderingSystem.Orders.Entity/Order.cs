@@ -85,6 +85,7 @@ public class Order : AggregateRoot<OrderId>
     {
         var orderItemAddedEvent = new OrderItemAddedEvent
         (
+           Id,
             menuItemId,
             menuItemName,
             quantity,

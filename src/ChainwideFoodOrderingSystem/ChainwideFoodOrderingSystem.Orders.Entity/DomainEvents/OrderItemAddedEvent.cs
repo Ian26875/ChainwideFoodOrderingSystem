@@ -8,6 +8,8 @@ namespace ChainwideFoodOrderingSystem.Orders.Entity.DomainEvents;
 /// <seealso cref="DomainEvent"/>
 public class OrderItemAddedEvent : DomainEvent
 {
+    public Guid OrderId { get; }
+
     /// <summary>
     ///     餐點唯一識別碼
     /// </summary>
@@ -47,19 +49,9 @@ public class OrderItemAddedEvent : DomainEvent
     ///     對這個餐點項目的特殊要求或備註
     /// </summary>
     public string SpecialInstructions { get; }
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="OrderItemAddedEvent"/> class
-    /// </summary>
-    /// <param name="menuItemId">The menu item id</param>
-    /// <param name="menuItemName">The menu item name</param>
-    /// <param name="quantity">The quantity</param>
-    /// <param name="unitPrice">The unit price</param>
-    /// <param name="description">The description</param>
-    /// <param name="options">The options</param>
-    /// <param name="category">The category</param>
-    /// <param name="specialInstructions">The special instructions</param>
-    public OrderItemAddedEvent(int menuItemId, 
+    
+    public OrderItemAddedEvent(Guid orderId,
+                               int menuItemId, 
                                string menuItemName, 
                                int quantity, 
                                decimal unitPrice, 
@@ -68,6 +60,7 @@ public class OrderItemAddedEvent : DomainEvent
                                string category, 
                                string specialInstructions)
     {
+        OrderId = orderId;
         MenuItemId = menuItemId;
         MenuItemName = menuItemName;
         Quantity = quantity;
