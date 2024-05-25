@@ -1,10 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChainwideFoodOrderingSystem.SeedWork", "ChainwideFoodOrderingSystem.SeedWork\ChainwideFoodOrderingSystem.SeedWork.csproj", "{C0E059E5-D0EB-4B1B-930A-5508BBFC6BE0}"
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32526.322
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChainwideFoodOrderingSystem.SeedWork", "ChainwideFoodOrderingSystem.SeedWork\ChainwideFoodOrderingSystem.SeedWork.csproj", "{C0E059E5-D0EB-4B1B-930A-5508BBFC6BE0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChainwideFoodOrderingSystem.Orders.Entity", "ChainwideFoodOrderingSystem.Orders.Entity\ChainwideFoodOrderingSystem.Orders.Entity.csproj", "{D81D4726-7FA7-40BC-9623-54DA36CA5E9F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChainwideFoodOrderingSystem.Orders.Entity", "ChainwideFoodOrderingSystem.Orders.Entity\ChainwideFoodOrderingSystem.Orders.Entity.csproj", "{D81D4726-7FA7-40BC-9623-54DA36CA5E9F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChainwideFoodOrderingSystem.Orders.UseCase", "ChainwideFoodOrderingSystem.Orders.UseCase\ChainwideFoodOrderingSystem.Orders.UseCase.csproj", "{AD18CB1E-6DAF-4564-B736-B0E51DB125D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChainwideFoodOrderingSystem.Orders.UseCase", "ChainwideFoodOrderingSystem.Orders.UseCase\ChainwideFoodOrderingSystem.Orders.UseCase.csproj", "{AD18CB1E-6DAF-4564-B736-B0E51DB125D9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Orders", "Orders", "{0AE198C3-5862-4A43-8416-1A793726F933}"
 EndProject
@@ -12,13 +15,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{69273634-2
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{8D8F967F-6712-4869-A86A-2180F06603AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChainwideFoodOrderingSystem.ArchitectureTests", "ChainwideFoodOrderingSystem.ArchitectureTests\ChainwideFoodOrderingSystem.ArchitectureTests.csproj", "{EC634AEE-3A0E-4578-BE05-6A067B52FAA2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChainwideFoodOrderingSystem.ArchitectureTests", "ChainwideFoodOrderingSystem.ArchitectureTests\ChainwideFoodOrderingSystem.ArchitectureTests.csproj", "{EC634AEE-3A0E-4578-BE05-6A067B52FAA2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChainwideFoodOrderingSystem.Orders.Persistence", "ChainwideFoodOrderingSystem.Orders.Persistence\ChainwideFoodOrderingSystem.Orders.Persistence.csproj", "{7C036A48-6831-419F-A75E-E9A32154AE92}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChainwideFoodOrderingSystem.Orders.Persistence", "ChainwideFoodOrderingSystem.Orders.Persistence\ChainwideFoodOrderingSystem.Orders.Persistence.csproj", "{7C036A48-6831-419F-A75E-E9A32154AE92}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChainwideFoodOrderingSystem.Orders.WebAPI", "ChainwideFoodOrderingSystem.Orders.WebAPI\ChainwideFoodOrderingSystem.Orders.WebAPI.csproj", "{2717CBDD-3020-4023-944E-F88FFFA4F9E3}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChainwideFoodOrderingSystem.Orders.MainComponent", "ChainwideFoodOrderingSystem.Orders.MainComponent\ChainwideFoodOrderingSystem.Orders.MainComponent.csproj", "{4BF006F5-F72D-490B-8E11-B1DF27F53BA6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChainwideFoodOrderingSystem.Orders.WebAPI", "ChainwideFoodOrderingSystem.Orders.WebAPI\ChainwideFoodOrderingSystem.Orders.WebAPI.csproj", "{2717CBDD-3020-4023-944E-F88FFFA4F9E3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -50,18 +51,19 @@ Global
 		{2717CBDD-3020-4023-944E-F88FFFA4F9E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2717CBDD-3020-4023-944E-F88FFFA4F9E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2717CBDD-3020-4023-944E-F88FFFA4F9E3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4BF006F5-F72D-490B-8E11-B1DF27F53BA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4BF006F5-F72D-490B-8E11-B1DF27F53BA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4BF006F5-F72D-490B-8E11-B1DF27F53BA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4BF006F5-F72D-490B-8E11-B1DF27F53BA6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{C0E059E5-D0EB-4B1B-930A-5508BBFC6BE0} = {69273634-2C29-444B-848C-5F3EFDF63105}
 		{D81D4726-7FA7-40BC-9623-54DA36CA5E9F} = {0AE198C3-5862-4A43-8416-1A793726F933}
 		{AD18CB1E-6DAF-4564-B736-B0E51DB125D9} = {0AE198C3-5862-4A43-8416-1A793726F933}
-		{C0E059E5-D0EB-4B1B-930A-5508BBFC6BE0} = {69273634-2C29-444B-848C-5F3EFDF63105}
 		{EC634AEE-3A0E-4578-BE05-6A067B52FAA2} = {8D8F967F-6712-4869-A86A-2180F06603AA}
 		{7C036A48-6831-419F-A75E-E9A32154AE92} = {0AE198C3-5862-4A43-8416-1A793726F933}
 		{2717CBDD-3020-4023-944E-F88FFFA4F9E3} = {0AE198C3-5862-4A43-8416-1A793726F933}
-		{4BF006F5-F72D-490B-8E11-B1DF27F53BA6} = {0AE198C3-5862-4A43-8416-1A793726F933}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A0EB101E-6532-478C-B063-3B0CD7A5E4D2}
 	EndGlobalSection
 EndGlobal
