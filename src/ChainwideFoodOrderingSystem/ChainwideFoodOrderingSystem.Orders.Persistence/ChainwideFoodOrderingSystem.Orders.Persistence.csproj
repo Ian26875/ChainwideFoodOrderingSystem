@@ -10,4 +10,11 @@
       <ProjectReference Include="..\ChainwideFoodOrderingSystem.Orders.UseCase\ChainwideFoodOrderingSystem.Orders.UseCase.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.30" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="6.0.30" />
+      <PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.0" />
+      <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.4" />
+    </ItemGroup>
+
 </Project>
