@@ -39,7 +39,8 @@ public class Order : AggregateRoot<OrderId>
     ///     訂單創建時間
     /// </summary>
     public DateTime CreatedAt { get; private set; }
-
+    
+    
     /// <summary>
     ///     取得訂單的總價。
     /// </summary>
