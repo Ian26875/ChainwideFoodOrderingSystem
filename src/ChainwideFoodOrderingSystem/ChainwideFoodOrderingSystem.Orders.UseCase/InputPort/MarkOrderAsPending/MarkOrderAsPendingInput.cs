@@ -9,5 +9,6 @@ public class MarkOrderAsPendingInput : Input
     public MarkOrderAsPendingInput(Guid orderId)
     {
         this.OrderId = orderId;
+        this.ValidateSelf();
     }
 }

@@ -8,13 +8,21 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.30" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="6.0.30" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.30" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
     </ItemGroup>
 
     <ItemGroup>
       <Content Include="..\.dockerignore">
         <Link>.dockerignore</Link>
       </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\ChainwideFoodOrderingSystem.Orders.Persistence\ChainwideFoodOrderingSystem.Orders.Persistence.csproj" />
+      <ProjectReference Include="..\ChainwideFoodOrderingSystem.Orders.UseCase\ChainwideFoodOrderingSystem.Orders.UseCase.csproj" />
     </ItemGroup>
 
 </Project>

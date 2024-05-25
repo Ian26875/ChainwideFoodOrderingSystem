@@ -20,6 +20,7 @@ public class CreateOrderInput : Input
         BuyId = buyId;
         Address = address;
         OrderItems = orderItems;
+        this.ValidateSelf();
     }
 
     /// <summary>
