@@ -25,4 +25,8 @@
         </PackageReference>
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\ChainwideFoodOrderingSystem.Orders.WebAPI\ChainwideFoodOrderingSystem.Orders.WebAPI.csproj" />
+    </ItemGroup>
+
 </Project>
