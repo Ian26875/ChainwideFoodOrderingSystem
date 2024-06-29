@@ -8,6 +8,9 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="Asp.Versioning.Mvc" Version="6.4.1" />
+        <PackageReference Include="Asp.Versioning.Mvc.ApiExplorer" Version="6.4.0" />
+        <PackageReference Include="FluentValidation" Version="11.9.2" />
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.30" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="6.0.30" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.30" />
@@ -23,6 +26,10 @@
     <ItemGroup>
       <ProjectReference Include="..\ChainwideFoodOrderingSystem.Orders.Persistence\ChainwideFoodOrderingSystem.Orders.Persistence.csproj" />
       <ProjectReference Include="..\ChainwideFoodOrderingSystem.Orders.UseCase\ChainwideFoodOrderingSystem.Orders.UseCase.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Infrastructure\ExceptionFilters\" />
     </ItemGroup>
 
 </Project>
