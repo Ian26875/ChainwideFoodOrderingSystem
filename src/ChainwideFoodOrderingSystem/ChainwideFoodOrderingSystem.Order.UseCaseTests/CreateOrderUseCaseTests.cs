@@ -16,10 +16,7 @@ public class CreateOrderUseCaseTests
 
     [Theory]
     [AutoMoqData]
-    public async Task Handle_WhenInputIsNull_ThrowArgumentException(
-        [Frozen] Mock<IOrderRepository> mockOrderRepository,
-        [Frozen] Mock<IEventBus> mockEventBus,
-        CreateOrderUseCase sut)
+    public async Task Handle_WhenInputIsNull_ThrowArgumentException(CreateOrderUseCase sut)
     {
         // arrange
         CreateOrderInput input = null;

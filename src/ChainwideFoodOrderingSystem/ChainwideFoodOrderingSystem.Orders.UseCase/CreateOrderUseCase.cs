@@ -7,9 +7,8 @@ using ChainwideFoodOrderingSystem.SeedWork.UseCase.DomainEvents;
 namespace ChainwideFoodOrderingSystem.Orders.UseCase;
 
 /// <summary>
-/// The create order use case class
+/// Use case for creating a new order.
 /// </summary>
-/// <seealso cref="ICreateOrderUseCase"/>
 public class CreateOrderUseCase : ICreateOrderUseCase
 {
     /// <summary>
@@ -34,12 +33,13 @@ public class CreateOrderUseCase : ICreateOrderUseCase
     }
 
     /// <summary>
-    /// Executes the input
+    /// Executes the CreateOrderUseCase asynchronously.
     /// </summary>
-    /// <param name="input">The input</param>
-    /// <param name="cancellationToken">The cancellation token</param>
-    /// <returns>A task containing a cqrs output of guid</returns>
-    public async Task<CqrsOutput<Guid>> ExecuteAsync(CreateOrderInput input, CancellationToken cancellationToken = default)
+    /// <param name="input">The input for creating a new order.</param>
+    /// <param name="cancellationToken">The cancellation token.</param>
+    /// <returns>A task containing the result of the CreateOrderUseCase execution.</returns>
+    public async Task<CqrsOutput<Guid>> ExecuteAsync(CreateOrderInput input,
+        CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(input);
 
