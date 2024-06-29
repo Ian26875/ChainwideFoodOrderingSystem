@@ -14,8 +14,7 @@ public record ResultCodes
     
     public static readonly ResultCodes OrderCreated = new ResultCodes("0201", "Order Created Successfully");
     
-    public static readonly ResultCodes OrderProcessed = new ResultCodes("0200", "Order Processed Successfully");
-    
     public static readonly ResultCodes InvalidRequest = new ResultCodes("0400", "Invalid Order Request");
     
+    public static readonly ResultCodes OrderCreationFailed = new ResultCodes("0500", "Order Creation Failed");
 }

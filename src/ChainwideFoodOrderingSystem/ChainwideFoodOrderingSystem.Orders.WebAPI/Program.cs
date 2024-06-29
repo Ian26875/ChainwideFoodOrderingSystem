@@ -1,13 +1,8 @@
-
-
-
-
 using Asp.Versioning;
 using ChainwideFoodOrderingSystem.Orders.WebAPI.Infrastructure.DependencyInjection;
+using ChainwideFoodOrderingSystem.Orders.WebAPI.Infrastructure.Mappings;
 
 var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
 
 builder.Services.AddControllers();
 
@@ -24,6 +19,12 @@ builder.Services.AddApiVersioning(options =>
     options.GroupNameFormat = "'v'VVV";
     options.AssumeDefaultVersionWhenUnspecified = true;
 });
+
+// AutoMapper
+builder.Services.AddAutoMapper
+(
+    o => o.AddProfile<OrderWebApiProfile>()
+);
 
 // Order Component
 builder.Services.AddOrderUseCaseModule(builder.Configuration)
