@@ -2,19 +2,19 @@
 
 public class CqrsOutput : Output
 {
-    public ExitCode ExitCode { get; set; }
-
-    public string Message { get; set; }
-    
-    public CqrsOutput() 
+    public CqrsOutput()
     {
-       this.ExitCode=ExitCode.Success;
-       this.Message = string.Empty;
+        ExitCode = ExitCode.Success;
+        Message = string.Empty;
     }
+
+    public ExitCode ExitCode { get; protected set; }
+
+    public string Message { get; protected set; }
 
     public CqrsOutput WithMessage(string message)
     {
-        this.Message = message;
+        Message = message;
         return this;
     }
 
@@ -25,7 +25,7 @@ public class CqrsOutput : Output
             ExitCode = ExitCode.Success
         };
     }
-    
+
     public static CqrsOutput Fail()
     {
         return new CqrsOutput

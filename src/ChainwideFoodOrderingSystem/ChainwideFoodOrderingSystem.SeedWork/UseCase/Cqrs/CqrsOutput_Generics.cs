@@ -1,6 +1,6 @@
 ﻿namespace ChainwideFoodOrderingSystem.SeedWork.UseCase.Cqrs;
 
-public class CqrsOutput<TId> : CqrsOutput
+public sealed class CqrsOutput<TId> : CqrsOutput
 {
     /// <summary>
     /// 獲取或設置識別碼。
