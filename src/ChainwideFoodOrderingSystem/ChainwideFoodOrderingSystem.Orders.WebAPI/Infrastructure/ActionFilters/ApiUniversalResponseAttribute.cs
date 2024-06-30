@@ -1,21 +1,32 @@
-﻿using System.Diagnostics;
+using System.Diagnostics;
 using ChainwideFoodOrderingSystem.Orders.WebAPI.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace ChainwideFoodOrderingSystem.Orders.WebAPI.Infrastructure.ActionFilters;
 
+/// <summary>
+/// The api universal response attribute class
+/// </summary>
+/// <seealso cref="ActionFilterAttribute"/>
 [AttributeUsage(AttributeTargets.Class| AttributeTargets.Method)]
 public class ApiUniversalResponseAttribute : ActionFilterAttribute
 {
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ApiUniversalResponseAttribute"/> class
+    /// </summary>
     public ApiUniversalResponseAttribute()
     {
         Order = 100;
     }
     
-    public override async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
+
+    /// <summary>
+    /// Ons the action executed using the specified context
+    /// </summary>
+    /// <param name="context">The context</param>
+    public override void OnActionExecuted(ActionExecutedContext context)
     {
-        await next(); 
         if (context.Result is ObjectResult objectResult)
         {
             var traceId = Activity.Current?.Context.TraceId.ToHexString() ?? Guid.NewGuid().ToString();
@@ -35,5 +46,4 @@ public class ApiUniversalResponseAttribute : ActionFilterAttribute
             context.Result = new ObjectResult(response);
         }
     }
-    
 }

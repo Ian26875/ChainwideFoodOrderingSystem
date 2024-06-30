@@ -1,5 +1,6 @@
 using ChainwideFoodOrderingSystem.Order.IntegrationTests.TestResources;
 using ChainwideFoodOrderingSystem.Orders.WebAPI;
+using ChainwideFoodOrderingSystem.Orders.WebAPI.Models;
 using FluentAssertions;
 using Xunit.Abstractions;
 
@@ -34,6 +35,6 @@ public class WeatherForecastControllerTests
         // assert
         response.Should().Be200Ok()
             .And
-            .Satisfy<List<WeatherForecast>>(w => w.Should().HaveCount(5));
+            .Satisfy<ApiUniversalResponse<List<WeatherForecast>>>(w => w.Data.Should().HaveCount(5));
     }
 }
