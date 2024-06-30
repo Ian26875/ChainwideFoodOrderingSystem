@@ -26,7 +26,7 @@ public class WeatherForecastControllerTests
     public async Task Test_GetWeatherForecast_ReturnsValidForecasts()
     {
         // arrange
-        var requestUri = "/WeatherForecast";
+        var requestUri = "api/V1/WeatherForecast";
 
         // act
         var response = await HttpClient.GetAsync(requestUri);

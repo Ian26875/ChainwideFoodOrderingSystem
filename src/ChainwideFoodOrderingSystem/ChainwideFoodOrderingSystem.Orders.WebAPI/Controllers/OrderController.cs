@@ -13,6 +13,7 @@ namespace ChainwideFoodOrderingSystem.Orders.WebAPI.Controllers;
 [ApiVersion("1")]
 [ApiController]
 [Route("api/v{version:apiVersion}/[controller]")]
+[ApiUniversalResponse]
 public class OrderController : ControllerBase
 {
     private readonly ICreateOrderUseCase _createOrderUseCase;

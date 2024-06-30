@@ -5,8 +5,14 @@ using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace ChainwideFoodOrderingSystem.Orders.WebAPI.Infrastructure.ActionFilters;
 
-public class ApiUniversalResponseActionFilterAttribute : ActionFilterAttribute
+[AttributeUsage(AttributeTargets.Class| AttributeTargets.Method)]
+public class ApiUniversalResponseAttribute : ActionFilterAttribute
 {
+    public ApiUniversalResponseAttribute()
+    {
+        Order = 100;
+    }
+    
     public override async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
     {
         await next(); 

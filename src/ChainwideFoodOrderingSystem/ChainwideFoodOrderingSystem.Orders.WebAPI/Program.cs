@@ -28,7 +28,8 @@ builder.Services.AddAutoMapper
 
 // Order Component
 builder.Services.AddOrderUseCaseModule(builder.Configuration)
-                .AddOrderPersistenceModule(builder.Configuration);
+                .AddOrderPersistenceModule(builder.Configuration)
+                .AddEventBusModule();
 
 
 

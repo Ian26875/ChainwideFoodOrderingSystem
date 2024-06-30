@@ -4,12 +4,19 @@ using ChainwideFoodOrderingSystem.Orders.UseCase;
 using ChainwideFoodOrderingSystem.Orders.UseCase.InputPort.CreateOrder;
 using ChainwideFoodOrderingSystem.Orders.UseCase.InputPort.MarkOrderAsPending;
 using ChainwideFoodOrderingSystem.Orders.UseCase.OutputPort;
+using ChainwideFoodOrderingSystem.Orders.WebAPI.Infrastructure.EventBus;
+using ChainwideFoodOrderingSystem.SeedWork.UseCase.DomainEvents;
 using Microsoft.EntityFrameworkCore;
 
 namespace ChainwideFoodOrderingSystem.Orders.WebAPI.Infrastructure.DependencyInjection;
 
 public static class DependencyInjectionContainer
 {
+    public static IServiceCollection AddEventBusModule(this IServiceCollection services)
+    {
+        return services.AddSingleton<IEventBus, EventBusAdapter>();
+    }
+
 
     public static IServiceCollection AddOrderUseCaseModule(this IServiceCollection services, IConfiguration configuration)
     {
