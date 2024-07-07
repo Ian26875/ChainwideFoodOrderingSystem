@@ -38,7 +38,7 @@ public class PlaceOrderUseCase : IPlaceOrderUseCase
     /// <param name="input">The input for creating a new order.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A task containing the result of the CreateOrderUseCase execution.</returns>
-    public async Task<CqrsOutput<Guid>> ExecuteAsync(CreateOrderInput input,
+    public async Task<CqrsOutput<Guid>> ExecuteAsync(PlaceOrderInput input,
         CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(input);

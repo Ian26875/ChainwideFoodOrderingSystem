@@ -19,7 +19,7 @@ public class PlaceOrderUseCaseTests
     public async Task Handle_WhenInputIsNull_ThrowArgumentException(PlaceOrderUseCase sut)
     {
         // arrange
-        CreateOrderInput input = null;
+        PlaceOrderInput input = null;
 
         // act
         Func<Task> func = async () => await sut.ExecuteAsync(input);
@@ -32,7 +32,7 @@ public class PlaceOrderUseCaseTests
     [Theory]
     [AutoMoqData]
     public async Task ExecuteAsync_CreatesOrderAndAddsOrderItems(
-        CreateOrderInput input,
+        PlaceOrderInput input,
         [Frozen] Mock<IOrderRepository> mockOrderRepository,
         [Frozen] Mock<IEventBus> mockEventBus,
         PlaceOrderUseCase sut)

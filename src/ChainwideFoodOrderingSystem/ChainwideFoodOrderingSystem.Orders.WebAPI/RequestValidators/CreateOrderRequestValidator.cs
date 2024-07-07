@@ -4,7 +4,7 @@ using FluentValidation;
 
 namespace ChainwideFoodOrderingSystem.Orders.WebAPI.RequestValidators;
 
-public class CreateOrderRequestValidator : AbstractValidator<CreateOrderRequest> 
+public class CreateOrderRequestValidator : AbstractValidator<PlaceOrderRequest> 
 {
     public CreateOrderRequestValidator()
     {

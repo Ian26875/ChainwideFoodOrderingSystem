@@ -33,23 +33,23 @@ public class OrderController : ControllerBase
     /// <summary>
     ///     Creates a new order.
     /// </summary>
-    /// <param name="createOrderRequest">The request containing the details of the order to be created.</param>
+    /// <param name="placeOrderRequest">The request containing the details of the order to be created.</param>
     /// <returns>The result of the order creation.</returns>
     [HttpPost]
-    [ValidateRequest(typeof(CreateOrderRequest))]
-    public async Task<IActionResult> CreateAsync(CreateOrderRequest createOrderRequest)
+    [ValidateRequest(typeof(PlaceOrderRequest))]
+    public async Task<IActionResult> PlaceOrderAsync(PlaceOrderRequest placeOrderRequest)
     {
-        var orderItems = _mapper.Map<List<OrderItemDto>>(createOrderRequest.OrderItems);
+        var orderItems = _mapper.Map<List<OrderItemDto>>(placeOrderRequest.OrderItems);
 
-        var createOrderInput = new CreateOrderInput
+        var createOrderInput = new PlaceOrderInput
         (
-            createOrderRequest.BuyId,
-            createOrderRequest.Address,
+            placeOrderRequest.BuyId,
+            placeOrderRequest.Address,
             orderItems
         );
 
         var output = await _placeOrderUseCase.ExecuteAsync(createOrderInput);
 
-        return Ok(CreateOrderResponse.Succeed(output.Id.ToString()));
+        return Ok(PlaceOrderResponse.Succeed(output.Id.ToString()));
     }
 }

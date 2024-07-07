@@ -7,15 +7,15 @@ namespace ChainwideFoodOrderingSystem.Orders.UseCase.InputPort.CreateOrder;
 ///     The create order input class
 /// </summary>
 /// <seealso cref="Input" />
-public class CreateOrderInput : Input
+public class PlaceOrderInput : Input
 {
     /// <summary>
-    ///     Initializes a new instance of the <see cref="CreateOrderInput" /> class
+    ///     Initializes a new instance of the <see cref="PlaceOrderInput" /> class
     /// </summary>
     /// <param name="buyId">The buy id</param>
     /// <param name="address">The address</param>
     /// <param name="orderItems">The order items</param>
-    public CreateOrderInput(int buyId, string address, List<OrderItemDto> orderItems)
+    public PlaceOrderInput(int buyId, string address, List<OrderItemDto> orderItems)
     {
         BuyId = buyId;
         Address = address;

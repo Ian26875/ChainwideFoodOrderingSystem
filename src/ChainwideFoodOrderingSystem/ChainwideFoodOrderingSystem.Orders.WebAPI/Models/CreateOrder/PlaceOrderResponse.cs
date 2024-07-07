@@ -2,9 +2,9 @@
 
 namespace ChainwideFoodOrderingSystem.Orders.WebAPI.Models.CreateOrder;
 
-public record CreateOrderResponse(string OrderId,bool IsSuccess,string Code,string Message)
+public record PlaceOrderResponse(string OrderId,bool IsSuccess,string Code,string Message)
 {
-    public static CreateOrderResponse Succeed(string orderId) => new CreateOrderResponse
+    public static PlaceOrderResponse Succeed(string orderId) => new PlaceOrderResponse
     (
         OrderId: orderId,
         IsSuccess: true,
@@ -12,7 +12,7 @@ public record CreateOrderResponse(string OrderId,bool IsSuccess,string Code,stri
         Message: ResultCodes.OrderCreated.Message
     );
     
-    public static CreateOrderResponse Fail(string errorCode, string errorMessage) => new CreateOrderResponse
+    public static PlaceOrderResponse Fail(string errorCode, string errorMessage) => new PlaceOrderResponse
     (
         OrderId: null,
         IsSuccess: false,

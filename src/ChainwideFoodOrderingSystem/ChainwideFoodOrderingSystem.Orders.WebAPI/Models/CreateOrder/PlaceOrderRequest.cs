@@ -1,6 +1,6 @@
 ﻿namespace ChainwideFoodOrderingSystem.Orders.WebAPI.Models.CreateOrder;
 
-public class CreateOrderRequest
+public class PlaceOrderRequest
 {
     /// <summary>
     ///     Gets the value of the buy id
