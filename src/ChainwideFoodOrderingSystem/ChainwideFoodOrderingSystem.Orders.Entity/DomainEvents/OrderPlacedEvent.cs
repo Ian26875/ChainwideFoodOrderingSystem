@@ -2,9 +2,9 @@
 
 namespace ChainwideFoodOrderingSystem.Orders.Entity.DomainEvents;
 
-public class OrderCreatedEvent : DomainEvent
+public class OrderPlacedEvent : DomainEvent
 {
-    public OrderCreatedEvent(Guid orderId, int buyId, string address)
+    public OrderPlacedEvent(Guid orderId, int buyId, string address)
     {
         OrderId = orderId;
         BuyId = buyId;

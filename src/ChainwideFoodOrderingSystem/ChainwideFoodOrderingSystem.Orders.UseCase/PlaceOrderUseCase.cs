@@ -9,7 +9,7 @@ namespace ChainwideFoodOrderingSystem.Orders.UseCase;
 /// <summary>
 /// Use case for creating a new order.
 /// </summary>
-public class CreateOrderUseCase : ICreateOrderUseCase
+public class PlaceOrderUseCase : IPlaceOrderUseCase
 {
     /// <summary>
     /// The order repository
@@ -22,11 +22,11 @@ public class CreateOrderUseCase : ICreateOrderUseCase
     private readonly IEventBus _eventBus;
     
     /// <summary>
-    /// Initializes a new instance of the <see cref="CreateOrderUseCase"/> class
+    /// Initializes a new instance of the <see cref="PlaceOrderUseCase"/> class
     /// </summary>
     /// <param name="orderRepository">The order repository</param>
     /// <param name="eventBus">The event bus</param>
-    public CreateOrderUseCase(IOrderRepository orderRepository, IEventBus eventBus)
+    public PlaceOrderUseCase(IOrderRepository orderRepository, IEventBus eventBus)
     {
         _orderRepository = orderRepository;
         _eventBus = eventBus;

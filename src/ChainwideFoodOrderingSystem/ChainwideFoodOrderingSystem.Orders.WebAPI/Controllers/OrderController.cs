@@ -16,17 +16,17 @@ namespace ChainwideFoodOrderingSystem.Orders.WebAPI.Controllers;
 [ApiUniversalResponse]
 public class OrderController : ControllerBase
 {
-    private readonly ICreateOrderUseCase _createOrderUseCase;
+    private readonly IPlaceOrderUseCase _placeOrderUseCase;
 
     private readonly IMapper _mapper;
 
     /// <summary>
     ///     Represents a controller for handling orders.
     /// </summary>
-    public OrderController(ICreateOrderUseCase createOrderUseCase,
+    public OrderController(IPlaceOrderUseCase placeOrderUseCase,
         IMapper mapper)
     {
-        _createOrderUseCase = createOrderUseCase;
+        _placeOrderUseCase = placeOrderUseCase;
         _mapper = mapper;
     }
 
@@ -48,7 +48,7 @@ public class OrderController : ControllerBase
             orderItems
         );
 
-        var output = await _createOrderUseCase.ExecuteAsync(createOrderInput);
+        var output = await _placeOrderUseCase.ExecuteAsync(createOrderInput);
 
         return Ok(CreateOrderResponse.Succeed(output.Id.ToString()));
     }

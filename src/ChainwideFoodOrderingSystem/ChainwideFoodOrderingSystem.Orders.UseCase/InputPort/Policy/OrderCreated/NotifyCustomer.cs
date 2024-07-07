@@ -8,7 +8,7 @@ namespace ChainwideFoodOrderingSystem.Orders.UseCase.InputPort.Policy.OrderCreat
 /// 負責通知客戶的類別。
 /// </summary>
 /// <seealso cref="IEventHandler{OrderCreatedEvent}"/>
-public class NotifyCustomer : IEventHandler<OrderCreatedEvent>
+public class NotifyCustomer : IEventHandler<OrderPlacedEvent>
 {
     /// <summary>
     /// 推送通知客戶端。
@@ -36,7 +36,7 @@ public class NotifyCustomer : IEventHandler<OrderCreatedEvent>
     /// </summary>
     /// <param name="domainEvent">領域事件。</param>
     /// <param name="cancellationToken">取消令牌。</param>
-    public async Task HandleAsync(OrderCreatedEvent domainEvent, CancellationToken cancellationToken =  default)
+    public async Task HandleAsync(OrderPlacedEvent domainEvent, CancellationToken cancellationToken =  default)
     {
         // 從用戶查詢接口獲取用戶的設備識別碼
         string userDeviceIdentifier = await _userInquiry.GetDeviceIdAsync(domainEvent.BuyId); 

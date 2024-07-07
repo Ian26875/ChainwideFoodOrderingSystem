@@ -54,7 +54,7 @@ public class Order : AggregateRoot<OrderId>
     public static Order Create(OrderId orderId,BuyId buyId, Address address)
     {
         var order = new Order();
-        order.Apply(new OrderCreatedEvent(orderId, buyId, address));
+        order.Apply(new OrderPlacedEvent(orderId, buyId, address));
         return order;
     }
 
@@ -130,7 +130,7 @@ public class Order : AggregateRoot<OrderId>
 
         switch (domainEvent)
         {
-            case OrderCreatedEvent orderCreatedEvent:
+            case OrderPlacedEvent orderCreatedEvent:
                 Id = orderCreatedEvent.OrderId;
                 BuyId = orderCreatedEvent.BuyId;
                 Address = Address.FromString(orderCreatedEvent.Address);

@@ -3,7 +3,7 @@ using ChainwideFoodOrderingSystem.SeedWork.UseCase.Cqrs.Command;
 
 namespace ChainwideFoodOrderingSystem.Orders.UseCase.InputPort.CreateOrder;
 
-public interface ICreateOrderUseCase : ICommandHandler<CreateOrderInput,CqrsOutput<Guid>>
+public interface IPlaceOrderUseCase : ICommandHandler<CreateOrderInput,CqrsOutput<Guid>>
 {
     
 }

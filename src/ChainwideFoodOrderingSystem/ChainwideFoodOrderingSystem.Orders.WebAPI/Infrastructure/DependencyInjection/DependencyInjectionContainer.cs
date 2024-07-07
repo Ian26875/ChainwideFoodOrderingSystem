@@ -20,7 +20,7 @@ public static class DependencyInjectionContainer
 
     public static IServiceCollection AddOrderUseCaseModule(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddScoped<ICreateOrderUseCase, CreateOrderUseCase>();
+        services.AddScoped<IPlaceOrderUseCase, PlaceOrderUseCase>();
         services.AddScoped<IMarkOrderAsPendingUseCase, MarkOrderAsPendingUseCase>();
 
 

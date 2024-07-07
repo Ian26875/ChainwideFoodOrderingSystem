@@ -11,12 +11,12 @@ using Moq;
 
 namespace ChainwideFoodOrderingSystem.Order.UseCaseTests;
 
-public class CreateOrderUseCaseTests
+public class PlaceOrderUseCaseTests
 {
 
     [Theory]
     [AutoMoqData]
-    public async Task Handle_WhenInputIsNull_ThrowArgumentException(CreateOrderUseCase sut)
+    public async Task Handle_WhenInputIsNull_ThrowArgumentException(PlaceOrderUseCase sut)
     {
         // arrange
         CreateOrderInput input = null;
@@ -35,7 +35,7 @@ public class CreateOrderUseCaseTests
         CreateOrderInput input,
         [Frozen] Mock<IOrderRepository> mockOrderRepository,
         [Frozen] Mock<IEventBus> mockEventBus,
-        CreateOrderUseCase sut)
+        PlaceOrderUseCase sut)
     {
         // Arrange
         mockOrderRepository.Setup(x => x.SaveAsync(It.IsAny<Orders.Entity.Order>()))
