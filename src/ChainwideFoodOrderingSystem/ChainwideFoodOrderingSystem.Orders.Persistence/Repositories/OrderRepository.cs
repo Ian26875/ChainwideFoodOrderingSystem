@@ -1,18 +1,34 @@
-﻿using ChainwideFoodOrderingSystem.Orders.Entity;
+using ChainwideFoodOrderingSystem.Orders.Entity;
 using ChainwideFoodOrderingSystem.Orders.UseCase.OutputPort;
 using Microsoft.EntityFrameworkCore;
 
 namespace ChainwideFoodOrderingSystem.Orders.Persistence.Repositories;
 
+/// <summary>
+/// The order repository class
+/// </summary>
+/// <seealso cref="IOrderRepository"/>
 public class OrderRepository : IOrderRepository
 {
+    /// <summary>
+    /// The db
+    /// </summary>
     private readonly FoodOrderingDbContext _db;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="OrderRepository"/> class
+    /// </summary>
+    /// <param name="db">The db</param>
     public OrderRepository(FoodOrderingDbContext db)
     {
         _db = db;
     }
 
+    /// <summary>
+    /// Finds the id
+    /// </summary>
+    /// <param name="id">The id</param>
+    /// <returns>The order</returns>
     public async Task<Order?> FindAsync(OrderId id)
     {
         ArgumentNullException.ThrowIfNull(id);
@@ -22,6 +38,11 @@ public class OrderRepository : IOrderRepository
         return order;
     }
 
+    /// <summary>
+    /// Saves the aggregate root
+    /// </summary>
+    /// <param name="aggregateRoot">The aggregate root</param>
+    /// <returns>A task containing the order</returns>
     public async Task<Order> SaveAsync(Order aggregateRoot)
     {
         ArgumentNullException.ThrowIfNull(aggregateRoot);
@@ -32,14 +53,19 @@ public class OrderRepository : IOrderRepository
         return entityEntry.Entity;
     }
 
+    /// <summary>
+    /// Modifies the aggregate root
+    /// </summary>
+    /// <param name="aggregateRoot">The aggregate root</param>
+    /// <exception cref="Exception">A concurrency error occurred. </exception>
+    /// <exception cref="InvalidOperationException">Cannot modify a non-existing order.</exception>
+    /// <returns>The existing order</returns>
     public async Task<Order> ModifyAsync(Order aggregateRoot)
     {
         
-        ArgumentNullException.ThrowIfNull(aggregateRoot)
-            ;
-        // 检查数据库中是否已存在该订单
+        ArgumentNullException.ThrowIfNull(aggregateRoot);
         var existingOrder = await _db.Orders.FindAsync(aggregateRoot.Id);
-        if (existingOrder == null)
+        if (existingOrder is null)
         {
             throw new InvalidOperationException("Cannot modify a non-existing order.");
         }
