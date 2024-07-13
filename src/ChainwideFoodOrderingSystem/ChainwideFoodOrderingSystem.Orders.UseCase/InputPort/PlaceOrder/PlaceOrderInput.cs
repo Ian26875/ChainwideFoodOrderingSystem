@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using ChainwideFoodOrderingSystem.SeedWork.UseCase;
 
-namespace ChainwideFoodOrderingSystem.Orders.UseCase.InputPort.CreateOrder;
+namespace ChainwideFoodOrderingSystem.Orders.UseCase.InputPort.PlaceOrder;
 
 /// <summary>
 ///     The create order input class

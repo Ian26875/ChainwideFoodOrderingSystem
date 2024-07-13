@@ -1,7 +1,7 @@
 using AutoFixture.Xunit2;
 using ChainwideFoodOrderingSystem.Order.UseCaseTests.TestCustomizations;
 using ChainwideFoodOrderingSystem.Orders.UseCase;
-using ChainwideFoodOrderingSystem.Orders.UseCase.InputPort.CreateOrder;
+using ChainwideFoodOrderingSystem.Orders.UseCase.InputPort.PlaceOrder;
 using ChainwideFoodOrderingSystem.Orders.UseCase.OutputPort;
 using ChainwideFoodOrderingSystem.SeedWork.Entity;
 using ChainwideFoodOrderingSystem.SeedWork.UseCase;

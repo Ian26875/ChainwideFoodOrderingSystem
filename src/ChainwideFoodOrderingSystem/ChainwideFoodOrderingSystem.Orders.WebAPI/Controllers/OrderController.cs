@@ -1,6 +1,6 @@
 ﻿using Asp.Versioning;
 using AutoMapper;
-using ChainwideFoodOrderingSystem.Orders.UseCase.InputPort.CreateOrder;
+using ChainwideFoodOrderingSystem.Orders.UseCase.InputPort.PlaceOrder;
 using ChainwideFoodOrderingSystem.Orders.WebAPI.Infrastructure.ActionFilters;
 using ChainwideFoodOrderingSystem.Orders.WebAPI.Models.CreateOrder;
 using Microsoft.AspNetCore.Mvc;

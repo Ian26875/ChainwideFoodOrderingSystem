@@ -1,4 +1,4 @@
-﻿namespace ChainwideFoodOrderingSystem.Orders.UseCase.InputPort.CreateOrder;
+﻿namespace ChainwideFoodOrderingSystem.Orders.UseCase.InputPort.PlaceOrder;
 
 public class OrderItemDto
 {

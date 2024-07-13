@@ -114,12 +114,11 @@ public class Order : AggregateRoot<OrderId>
     {
         if (Status != OrderStatus.Draft)
         {
-            throw new InvalidOperationException("訂單狀態不是處於草稿，無法接受訂單。");
+            throw new InvalidOperationException("只有處於草稿狀態的訂單才能被標記為處理中。");
         }
-        
+    
         Apply(new OrderMarkedAsPendingEvent(Id));
     }
-    
     
     /// <summary>
     ///     Whens the domain event

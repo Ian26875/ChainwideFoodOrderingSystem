@@ -12,6 +12,7 @@ namespace ChainwideFoodOrderingSystem.Orders.UseCase;
 public class MarkOrderAsPendingUseCase : IMarkOrderAsPendingUseCase
 {
     private readonly IOrderRepository _orderRepository;
+    
     private readonly IEventBus _eventBus;
 
     /// <summary>
